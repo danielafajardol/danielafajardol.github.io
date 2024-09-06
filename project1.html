@@ -1,0 +1,123 @@
+
+<html lang="en">
+<head>
+    <title>A Look Into the Past: A Colorful Window Overlooking the Russian Empire</title>
+    <h1>A Look Into the Past: 
+        A Colorful Window Overlooking the Russian Empire</h1>
+</head>
+<body>
+    <div>
+        <h2>Abstract</h2>
+        <p>Sergei Mikhailovich was the man that pioneered color photography. 
+            Even though he lived at a time where there was no way to print color photographs, 
+            he envisioned a solution and recorded the exposures of different scenes onto a glass plate using three filters; 
+            red, green and blue. He traveled across the Russian Empire producing colored pictures and capturing the last years of the Russian Empire, 
+            leaving us a way into visualizing the past. Through computer graphics we can aim to achieve the thing that Sergei did with no technology; 
+            align the three filters in order to create a colored photograph. 
+        </p>
+        
+        <h2>My approach and challenges encountered:</h2>
+        <p>
+            For all the images the first thing I did was to crop the black boarders out and a 
+            percentage of pixels from each of the sides. For the jpg images I cropped 10% and for
+            the tif images I cropped 15%. To score the displacement of the images 
+            I implemented Euclidean distance, NCC, and SSIM. SSIM took considerably longer to run 
+            and between Euclidean distance and NCC I saw better results with NCC which is why I decided to use this one. 
+        </p>
+        <p>
+            For the smaller jpg images I exhaustively searched over a window 
+            of possible displacements and took the displacement with the best 
+            score over a range of [-15, 15] pixels. 
+            This part of the project was specially easy going. 
+        </p>
+        <p>
+            When looking at the bigger tif images, the project got more complicated. 
+            I implemented the pyramid methodology recursively. 
+            At the beginning I decreased the size of the window by a factor of 0.7 as 
+            I moved from a smaller frame to a bigger frame. Nonetheless, to optimize 
+            my solution I decided to only leave a window of [-15, 15] for the base 
+            case (smallest frame) and take a [-2, 2] window for the rest of the frames. 
+            This approach worked well and sped up my code significantly. 
+
+            One of the trickiest parts was to figure out what depth was needed for each 
+            one of the images. For this I tested different depths per image and visually 
+            saw what depth was better for each. Additionally, while doing the project 
+            I realized that some images align better depending on the color we use for 
+            the base. This is why for the images that where mostly green or yellow, 
+            I used the green filter as the base. 
+            From there, the alignment became much better. 
+        </p>
+    </div>
+
+    <h2>Images: from Most to Least Favorite</h2>
+    <div>
+        <h3>Emir</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/emir.jpg" width="800" height="auto">
+        <p>TIF, Green Base, Depth: 5</p>
+    </div>
+    <div>
+        <h3>Sculpture</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/sculpture.jpg" width="800" height="auto">
+        <p>TIF, Green Base, Depth: 5</p>
+    </div>
+    <div>
+        <h3>Icon</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/icon.jpg" width="800" height="auto">
+        <p>TIF, Green Base, Depth: 6</p>
+    <div>
+        <h3>Harvesters</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/harvesters.jpg" width="800" height="auto">
+        <p>TIF, Green Base, Depth: 4</p>
+    <div>
+        <h3>Melons</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/melons.jpg" width="800" height="auto">
+        <p>TIF, Blue Base, Depth: 6</p>
+    </div>
+    <div>
+        <h3>Church</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/church.jpg" width="800" height="auto">
+        <p>TIF, Blue Base, Depth: 5</p>
+    </div>
+    <div>
+        <h3>Three Generations</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/three_generations.jpg" width="800" height="auto">
+        <p>TIF, Blue Base, Depth: 6</p>
+    </div>
+    <div>
+        <h3>Lady</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/lady.jpg" width="800" height="auto">
+        <p>TIF, Blue Base, Depth: 5</p>
+    </div>
+    <div>
+        <h3>Onion Church</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/onion_church.jpg" width="800" height="auto">
+        <p>TIF, Blue Base, Depth: 6</p>
+    </div>
+    <div>
+        <h3>Train</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/train.jpg" width="800" height="auto">
+        <p>TIF, Green Base, Depth: 5</p>
+    </div>
+    <div>
+        <h3>Tobolsk</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/tobolsk.jpg" width="800" height="auto">
+        <p>JPG, Blue Base</p>
+    </div>
+    <div>
+        <h3>Cathedral</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/cathedral.jpg" width="800" height="auto">
+        <p>JPG, Blue Base</p>
+    </div>
+    <div>
+        <h3>Monastery</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/monastery.jpg" width="800" height="auto">
+        <p>JPG, Blue Base</p>
+    </div>
+    <div>
+        <h3>Self Portrait</h3>
+        <img src="/Users/daniela/CS 180/results/Final Results/self_portrait.jpg" width="800" height="auto">
+        <p>TIF, Green Base, Depth: 6</p>
+    </div>
+
+</body>
+</html>
