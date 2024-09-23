@@ -51,64 +51,64 @@
 
         <h3>1.1: Finite Difference Operator</h3>
         <p>
-            1. To find the partial derivatives, I convolved the image with \( Dx = [-1, 1] \) and \( Dy = [1, -1]^T \) using <code>scipy.signal.convolve2d</code>.
+            1. To find the partial derivatives, I convolved the image with Dx = [-1, 1] and Dy = [1, -1]^T  using <code>scipy.signal.convolve2d</code>.
         </p>
         <div class="image-row">
             <div>
-                <img src="results_proj_2/1.1_gradx.png" alt="Gradient x" width="200">
+                <img src="results_proj_2/1.1_gradx.png" alt="Gradient x" width="400">
                 <p>Gradient x</p>
             </div>
             <div>
-                <img src="results_proj_2/1.1_grady.png" alt="Gradient y" width="200">
+                <img src="results_proj_2/1.1_grady.png" alt="Gradient y" width="400">
                 <p>Gradient y</p>
             </div>
         </div>
-        <p>2. Computed the gradient magnitude image: \( \text{grad\_mag} = \sqrt{\text{grad\_x}^2 + \text{grad\_y}^2} \)</p>
+        <p>2. Computed the gradient magnitude image: (np.sqrt(grad_x**2 + grad_y**2))</p>
         <div class="image-row">
             <div>
-                <img src="results_proj_2/1.1grad_mag.png" alt="Gradient Magnitude" width="200">
+                <img src="results_proj_2/1.1grad_mag.png" alt="Gradient Magnitude" width="400">
                 <p>Gradient Magnitude</p>
             </div>
         </div>
         <p>
-            3. Threshold: \( \text{threshold} = \text{np.max}(\text{grad\_magnitude}) \times 0.36 \)<br>
+            3. Threshold:  np.max(grad_magnitude) * 0.36 <br>
             4. Created Binary Edge Image using the threshold.
         </p>
         <div class="image-row">
             <div>
-                <img src="results_proj_2/1.1_edge_real.png" alt="Edges" width="200">
+                <img src="results_proj_2/1.1_edge_real.png" alt="Edges" width="400">
                 <p>Edges</p>
             </div>
         </div>
 
         <h3>1.2: Derivative of Gaussian (DoG) Filter</h3>
         <p>Approach 1:</p>
-        <p>1. Created a Gaussian filter with \( \sigma = 2 \). Blurred the image by convolving it with the Gaussian filter using <code>convolve2d</code>.</p>
+        <p>1. Created a Gaussian filter with ( sigma = 2 ). Blurred the image by convolving it with the Gaussian filter using <code>convolve2d</code>.</p>
         <div class="image-row">
             <div>
-                <img src="results_proj_2/blurred_camera.png" alt="Blurred Image" width="200">
+                <img src="results_proj_2/blurred_camera.png" alt="Blurred Image" width="400">
                 <p>Blurred cameraman (Gaussian \( \sigma = 2 \))</p>
             </div>
         </div>
         <p>2. Convolved the blurred image with Dx and Dy to get the partial derivatives.</p>
         <div class="image-row">
             <div>
-                <img src="results_proj_2/dog_gradx.png" alt="Gradient x (DoG)" width="200">
+                <img src="results_proj_2/dog_gradx.png" alt="Gradient x (DoG)" width="400">
                 <p>Gradient x (DoG)</p>
             </div>
             <div>
-                <img src="results_proj_2/dog_grady.png" alt="Gradient y (DoG)" width="200">
+                <img src="results_proj_2/dog_grady.png" alt="Gradient y (DoG)" width="400">
                 <p>Gradient y (DoG)</p>
             </div>
         </div>
         <p>3. Computed gradient magnitude and created binary edge image:</p>
         <div class="image-row">
             <div>
-                <img src="results_proj_2/dog_grad_mag.png" alt="Gradient Magnitude (DoG)" width="200">
+                <img src="results_proj_2/dog_grad_mag.png" alt="Gradient Magnitude (DoG)" width="400">
                 <p>Gradient Magnitude (DoG)</p>
             </div>
             <div>
-                <img src="results_proj_2/dog_edge.png" alt="Edges (DoG)" width="200">
+                <img src="results_proj_2/dog_edge.png" alt="Edges (DoG)" width="400">
                 <p>Edges (DoG)</p>
             </div>
         </div>
@@ -150,25 +150,25 @@
         <h3>2.2: Hybrid Images</h3>
         <h4>Derek the Cat</h4>
         <div class="image-row">
-            <img src="results_proj_2/hybrid_derek_cat.png" alt="Hybrid Derek the Cat" width="400">
+            <img src="results_proj_2/hybrid_derek_cat.png" alt="Hybrid Derek the Cat" width="200">
         </div>
         <p>Basic example of hybrid images.</p>
 
         <h4>Camel Lion</h4>
         <div class="image-row">
-            <img src="results_proj_2/camel_lion.png" alt="Camel Lion" width="400">
+            <img src="results_proj_2/camel_lion.png" alt="Camel Lion" width="200">
         </div>
         <p>Riding Lions in Egypt!</p>
 
         <h4>A Firework Tree</h4>
         <div class="image-row">
-            <img src="results_proj_2/fire_tree.png" alt="Firework Tree" width="400">
+            <img src="results_proj_2/fire_tree.png" alt="Firework Tree" width="200">
         </div>
-        <p>Although you can see both images, the fireworks did not fit well enough to merge with the tree leaves.</p>
+        <p>Failure: Although you can see both images, the fireworks did not fit well enough to merge with the tree leaves.</p>
 
         <h4>Real Life Edna Moda</h4>
         <div class="image-row">
-            <img src="results_proj_2/similar_to_edna.png" alt="Hybrid Edna Moda" width="400">
+            <img src="results_proj_2/similar_to_edna.png" alt="Hybrid Edna Moda" width="200">
         </div>
         <p>My favorite hybrid!</p>
     </section>
@@ -177,14 +177,19 @@
         <h3>Frequency Analysis</h3>
         <div class="image-row">
             <img src="results_proj_2/freq_edna.png" alt="Frequency Edna Moda" width="400">
+            <p>Frequency Edna Moda</p>
             <img src="results_proj_2/freq_linda.png" alt="Frequency Linda Hunters" width="400">
+            <p>Frequency Linda Hunters</p>
         </div>
         <div class="image-row">
             <img src="results_proj_2/freq_low.png" alt="Frequency Low Pass" width="400">
+            <p>Frequency Low Pass</p>
             <img src="results_proj_2/freq_high.png" alt="Frequency High Pass" width="400">
+            <p>Frequency High Pass</p>
         </div>
         <div class="image-row">
-            <img src="results_proj_2/freq_combined.png" alt="Frequency Combined" width="400">
+            <img src="results_proj_2/freq_combined.png" alt="Frequency Combined" width="200">
+            <p>Frequency Combined</p>
         </div>
     </section>
 
@@ -196,10 +201,13 @@
                 <img src="results_proj_2/apple_progress.png" alt="Apple Progress" width="400">
                 <p>Apple Progress</p>
             </div>
-            <div>
+        </div>
+        <div class="image-row">
                 <img src="results_proj_2/orange_progress.png" alt="Orange Progress" width="400">
                 <p>Orange Progress</p>
             </div>
+        </div>
+         <div class="image-row">
             <div>
                 <img src="results_proj_2/oraple_progress.png" alt="Oraple Progress" width="400">
                 <p>Oraple Progress</p>
@@ -210,7 +218,7 @@
     <section>
         <h3>2.4: Multiresolution Blending (a.k.a. the Oraple!)</h3>
         <div class="image-row">
-            <img src="results_proj_2/orapple.png" alt="Oraple" width="400">
+            <img src="results_proj_2/orapple.png" alt="Oraple" width="200">
         </div>
         <p>Wao!</p>
     </section>
