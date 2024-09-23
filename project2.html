@@ -18,115 +18,178 @@
           
         <h2>1.1: Finite Difference Operator</h2>
         <p>
-            Description of gradient magnitude computation
+            1. To find the partial derivatives I convolved the image with Dx = [-1 1]
+            and Dy = [1 -1].T using scipy.signal.convolve2d .
+            <div>
+        
+            <img src="results_proj_2/1.1_gradx.png" width="800" height="auto">
+            <p>Gradient x </p>
+            <img src="results_proj_2/1.1_grady.png" width="800" height="auto">
+            <p>Gradient y </p>
+            <div>
+                
+            2. I then computed the gradient magnitude image (np.sqrt(grad_x**2 + grad_y**2)).
+                <div>
+                <img src="results_proj_2/1.1grad_mag.png" width="800" height="auto">
+        
+                <p>Gradient Magnitude </p>
+                <div>
+            3. Then I determined the threshold to be np.max(grad_magnitude) * 0.36
+            4. Finally created a Binary Edge Image with the previous threshold
+                    <div>
+                        <img src="results_proj_2/1.1_edge.png" width="800" height="auto">
+        <p>Edges </p>
+                        <div>
+            
         </p>
+        <div>
+        
+
+    </div>
         <p>
           <h2>1.2: Derivative of Gaussian (DoG) Filter </h2>
         <p>
-            What differenced do you see?
+            Approach 1:
+            1. Create gaussian. I chose sigma to be 2.
+            2. Blurred the image by convolving it with the gaussian filter using convolve2d
+            3. Convolved the blured image with Dx and Dy to get the partial derivatives
+            4. Took the gradient magnitude of the image (same equation as before)
+            5. Determined threshold (same as before)
+            6. Created binary edge image
+
+#Blurred image
+blurred_im = convolve2d(im_g, g_filter, mode='same', boundary='wrap')
+
+#Convolve image
+b_grad_x = convolve2d(blurred_im, D_x, mode='same', boundary='wrap')
+b_grad_y = convolve2d(blurred_im, D_y, mode='same', boundary='wrap')
+
+#Compute the gradient magnitude image
+b_grad_magnitude = np.sqrt(b_grad_x**2 + b_grad_y**2)
+
+#Determine threshold
+b_threshold = np.max(b_grad_magnitude) * 0.36
+
+# Create a binary edge image
+b_edge_image = b_grad_magnitude > b_threshold
         </p>
         <p>
+        <img src="results_proj_2/dog_gradx.png" width="800" height="auto">
+        <p>Gradient x </p>
+        <img src="results_proj_2/dog_grady.png" width="800" height="auto">
+        <p>Gradient y </p>
+        <img src="results_proj_2/dog_grad_mag.png" width="800" height="auto">
+        <p>Gradient Magnitude </p>
+        <img src="results_proj_2/dog_edge.png" width="800" height="auto">
+        <p>Edges </p>
     </div>
 
-    <h2>Images: from Most to Least Favorite</h2>
-    <div>
-        <h3>Emir</h3>
-        <img src="results_proj_2/emir.jpg" width="800" height="auto">
-        <p>TIF, Green Base, Depth: 5</p>
-        <p>Displacement vector B: (-22, -50)</p>
-        <p>Displacement vector R: (16, 58) </p>
+    </p>
+        
+        <h2>Part 2: Fun with Frequencies!</h2>
+        <p>
 
     </div>
-    <div>
-        <h3>Sculpture</h3>
-        <img src="Final Results/sculpture.jpg" width="800" height="auto">
-        <p>TIF, Green Base, Depth: 5</p>
-        <p> Displacement vector B: (10, -34)</p>
-        <p> Displacement vector R: (-14, 62)</p></p>
+        <p>
+          <h2>2.1: Image Sharpening </h2>
+
+        <h3>Taj Mahal</h3>
+        <p>
+        <img src="results_proj_2/blur_taj.png" width="800" height="auto">
+        <p> Blurred Version </p>
+        <img src="results_proj_2/sharp_taj.png" width="800" height="auto">
+        <p> Sharpened Version </p>
+    
     </div>
-    <div>
-        <h3>Icon</h3>
-        <img src="Final Results/icon.jpg" width="800" height="auto">
-        <p>TIF, Green Base, Depth: 6</p>
-        <p> Displacement vector B: (-16, -42)</p>
-        <p> Displacement vector R: (5, 50)</p>
-    <div>
-        <h3>Harvesters</h3>
-        <img src="Final Results/harvesters.jpg" width="800" height="auto">
-        <p>TIF, Green Base, Depth: 4</p>
-        <p> Displacement vector B: (-16, -59) </p>
-        <p> Displacement vector R: (-3, 62) </p>
-    <div>
-        <h3>Melons</h3>
-        <img src="Final Results/melons.jpg" width="800" height="auto">
-        <p>TIF, Blue Base, Depth: 6</p>
-        <p> Displacement vector G: (4, 62)</p>
-        <p> Displacement vector R: (12, 62)</p>
+    
+        <h3>Blue House</h3>
+        <p>
+        <img src="results_proj_2/blur_house.png" width="800" height="auto">
+        <p> Blurred Version </p>
+        <img src="results_proj_2/sharp_house.png" width="800" height="auto">
+        <p> Sharpened Version </p>
+        
     </div>
-    <div>
-        <h3>Church</h3>
-        <img src="Final Results/church.jpg" width="800" height="auto">
-        <p>TIF, Blue Base, Depth: 5</p>
-        <p> Displacement vector G: (4, 26)</p>
-        <p> Displacement vector R: (-4, 58)</p>
-    </div>
-    <div>
-        <h3>Three Generations</h3>
-        <img src="Final Results/three_generations.jpg" width="800" height="auto">
-        <p>TIF, Blue Base, Depth: 6</p>
-        <p> Displacement vector G: (12, 54)</p>
-        <p> Displacement vector R: (12, 62)</p>
-    </div>
-    <div>
-        <h3>Lady</h3>
-        <img src="Final Results/lady.jpg" width="800" height="auto">
-        <p>TIF, Blue Base, Depth: 5</p>
-        <p> Displacement vector G: (9, 54)</p>
-        <p> Displacement vector R: (0, 62)</p>
-    </div>
-    <div>
-        <h3>Onion Church</h3>
-        <img src="Final Results/onion_church.jpg" width="800" height="auto">
-        <p>TIF, Blue Base, Depth: 6</p>
-        <p> Displacement vector G: (26, 54)</p>
-        <p> Displacement vector R: (34, 62)</p>
-    </div>
-    <div>
-        <h3>Train</h3>
-        <img src="Final Results/train.jpg" width="800" height="auto">
-        <p>TIF, Green Base, Depth: 5</p>
-        <p> Displacement vector B: (-6, -46)</p>
-        <p> Displacement vector R: (26, 46)</p>
-    </div>
-    <div>
-        <h3>Tobolsk</h3>
-        <img src="Final Results/tobolsk.jpg" width="800" height="auto">
-        <p>JPG, Blue Base</p>
-        <p> Displacement vector G: (3, 3)</p>
-        <p> Displacement vector R: (3, 6)</p>
-    </div>
-    <div>
-        <h3>Cathedral</h3>
-        <img src="Final Results/cathedral.jpg" width="800" height="auto">
-        <p>JPG, Blue Base</p>
-        <p> Displacement vector G: (2, 5)</p>
-        <p> Displacement vector R: (3, 12)</p>
-    </div>
-    <div>
-        <h3>Monastery</h3>
-        <img src="Final Results/monastery.jpg" width="800" height="auto">
-        <p>JPG, Blue Base</p>
-        <p> Displacement vector G: (2, -3)</p>
-        <p> Displacement vector R: (2, 3)</p>
 
     </div>
-    <div>
-        <h3>Self Portrait</h3>
-        <img src="Final Results/self_portrait.jpg" width="800" height="auto">
-        <p>TIF, Green Base, Depth: 6</p>
-        <p> Displacement vector B: (-22, -62)</p>
-        <p> Displacement vector R: (6, 62)</p>
+        <p>
+          <h2>2.2: Hybrid Images </h2>
+
+        </div>
+        <h3> Derek The Cat</h3>
+        <p>
+        <img src="results_proj_2/hybrid_derek_cat.png" width="800" height="auto">
+        <p> Basic example. </p>
     </div>
+    
+</div>
+        <h3>Camel Lion</h3>
+        <p>
+        <img src="results_proj_2/camel_lion.png" width="800" height="auto">
+        <p> Riding Lions in Egypt! </p>
+    </div>
+
+    </div>
+        <h3> A Firework Tree </h3>
+        <p>
+        <img src="results_proj_2/fire_tree.png" width="800" height="auto">
+        <p> Failure: Although you can see both, the fireworks do not fit well enough to merge them with the tree leaves (I tried :( ) </p>
+    </div>
+    
+        <h3> My Favorite: Finding Real Life Edna Moda</h3>
+        <p>
+        <img src="results_proj_2/similar_to_edna.png" width="800" height="auto">
+        <p> Hybrid </p>
+
+    <h3> Frequency Analysis </h3>
+        <p>
+        <img src="results_proj_2/freq_edna.png" width="800" height="auto">
+        <p> Frequencies Edna Moda </p>
+
+    <p>
+        <img src="results_proj_2/freq_linda.png" width="800" height="auto">
+        <p> Frequencies Linda Hunters </p>
+    <p>
+        <img src="results_proj_2/freq_low.png" width="800" height="auto">
+        <p> Frequencies Low Pass (Linda Hunters) </p>
+    <p>
+        <img src="results_proj_2/freq_high.png" width="800" height="auto">
+        <p> Frequencies High Pass (Edna) </p>
+    <p>
+        <img src="results_proj_2/freq_combined.png" width="800" height="auto">
+        <p> Frequencies Combined! </p>
+        
+    </div>
+        <p>
+          <h2>2.3: Gaussian and Laplacian Stacks </h2>
+
+        </div>
+        <h3> Progress of Stacks </h3>
+        <p>
+        <img src="results_proj_2/apple_progress.png" width="800" height="auto">
+        <p> Progress of Apple </p>
+        <p>
+        <img src="results_proj_2/orange_progress.png" width="800" height="auto">
+        <p> Progress of Orange </p>
+    <p>
+        <img src="results_proj_2/oraple_progress.png" width="800" height="auto">
+        <p> The Magic Oraple! </p>
+    </div>
+
+    </div>
+        <p>
+          <h2>2.4: Multiresolution Blending (a.k.a. the oraple!) </h2>
+
+        </div>
+        <h3> Finally the Oraple !</h3>
+        <p>
+        <img src="results_proj_2/orapple.png" width="800" height="auto">
+        <p> Wao! </p>
+    </div>
+    
+</div>
+
+    
     
     
 </body>
