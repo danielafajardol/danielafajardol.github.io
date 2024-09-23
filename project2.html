@@ -52,10 +52,63 @@
             Approach 1:
             1. Create gaussian. I chose sigma to be 2.
             2. Blurred the image by convolving it with the gaussian filter using convolve2d
+            <div>
+        
+            <img src="results_proj_2/blurred_camera.png" width="800" height="auto">
+            <p> Blurred cameraman with gaussian filter (sigma = 2) </p>
+            
+            <div>
+                
             3. Convolved the blured image with Dx and Dy to get the partial derivatives
+            <div>
+        
+            <img src="results_proj_2/dog_gradx.png" width="800" height="auto">
+            <p>Gradient x </p>
+            <img src="results_proj_2/dog_grady.png" width="800" height="auto">
+            <p>Gradient y </p>
+            <div>
+                
             4. Took the gradient magnitude of the image (same equation as before)
+                <div>
+                <img src="results_proj_2/dog_grad_mag.png" width="800" height="auto">
+        
+                <p>Gradient Magnitude </p>
+                <div>
             5. Determined threshold (same as before)
             6. Created binary edge image
+                    <div>
+                        <img src="results_proj_2/dog_edge.png" width="800" height="auto">
+        <p>Edges </p>
+                        <div>
+            </p>
+        <div>
+            <p>
+                Difference in results: The edges are wider and clearer. The edges ignore some details 
+                that where visible in previous edges.
+        <p>
+            Approach 2:
+            Difference in approach: Convolved first the gaussian filter with the Dx and Dy and then 
+            applied it to the Blurred Image.
+
+            Difference in results: Almost identical except for a couple of small points. The 
+            edges of this approach appear to be a bit wider.
+            
+            <div>
+                 
+            <img src="results_proj_2/dog_grad_x_2.png" width="800" height="auto">
+            <p>Gradient x </p>
+            <img src="results_proj_2/dog_grad_y_2png.png" width="800" height="auto">
+            <p>Gradient y </p>
+            <div>
+            
+            6. Created binary edge image
+                    <div>
+                        <img src="results_proj_2/dog_edge_2.png" width="800" height="auto">
+                        <p>Edges </p>
+                        <div>
+            </p>
+        <div>
+            
 
 #Blurred image
 blurred_im = convolve2d(im_g, g_filter, mode='same', boundary='wrap')
