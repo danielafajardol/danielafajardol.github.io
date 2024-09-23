@@ -22,22 +22,22 @@
             and Dy = [1 -1].T using scipy.signal.convolve2d .
             <div>
         
-            <img src="results_proj_2/1.1_gradx.png" width="800" height="auto">
+            <img src="results_proj_2/1.1_gradx.png" width="200" height="auto">
             <p>Gradient x </p>
-            <img src="results_proj_2/1.1_grady.png" width="800" height="auto">
+            <img src="results_proj_2/1.1_grady.png" width="200" height="auto">
             <p>Gradient y </p>
             <div>
                 
             2. I then computed the gradient magnitude image (np.sqrt(grad_x**2 + grad_y**2)).
                 <div>
-                <img src="results_proj_2/1.1grad_mag.png" width="800" height="auto">
+                <img src="results_proj_2/1.1grad_mag.png" width="200" height="auto">
         
                 <p>Gradient Magnitude </p>
                 <div>
             3. Then I determined the threshold to be np.max(grad_magnitude) * 0.36
             4. Finally created a Binary Edge Image with the previous threshold
                     <div>
-                        <img src="results_proj_2/1.1_edge_real.png" width="800" height="auto">
+                        <img src="results_proj_2/1.1_edge_real.png" width="200" height="auto">
         <p>Edges </p>
                         <div>
             
@@ -54,7 +54,7 @@
             2. Blurred the image by convolving it with the gaussian filter using convolve2d
             <div>
         
-            <img src="results_proj_2/blurred_camera.png" width="800" height="auto">
+            <img src="results_proj_2/blurred_camera.png" width="200" height="auto">
             <p> Blurred cameraman with gaussian filter (sigma = 2) </p>
             
             <div>
@@ -62,22 +62,22 @@
             3. Convolved the blured image with Dx and Dy to get the partial derivatives
             <div>
         
-            <img src="results_proj_2/dog_gradx.png" width="800" height="auto">
+            <img src="results_proj_2/dog_gradx.png" width="200" height="auto">
             <p>Gradient x </p>
-            <img src="results_proj_2/dog_grady.png" width="800" height="auto">
+            <img src="results_proj_2/dog_grady.png" width="200" height="auto">
             <p>Gradient y </p>
             <div>
                 
             4. Took the gradient magnitude of the image (same equation as before)
                 <div>
-                <img src="results_proj_2/dog_grad_mag.png" width="800" height="auto">
+                <img src="results_proj_2/dog_grad_mag.png" width="200" height="auto">
         
                 <p>Gradient Magnitude </p>
                 <div>
             5. Determined threshold (same as before)
             6. Created binary edge image
                     <div>
-                        <img src="results_proj_2/dog_edge.png" width="800" height="auto">
+                        <img src="results_proj_2/dog_edge.png" width="200" height="auto">
         <p>Edges </p>
                         <div>
             </p>
@@ -95,15 +95,15 @@
             
             <div>
                  
-            <img src="results_proj_2/dog_grad_x_2.png" width="800" height="auto">
+            <img src="results_proj_2/dog_grad_x_2.png" width="200" height="auto">
             <p>Gradient x </p>
-            <img src="results_proj_2/dog_grad_y_2png.png" width="800" height="auto">
+            <img src="results_proj_2/dog_grad_y_2png.png" width="200" height="auto">
             <p>Gradient y </p>
             <div>
             
             6. Created binary edge image
                     <div>
-                        <img src="results_proj_2/dog_edge_2.png" width="800" height="auto">
+                        <img src="results_proj_2/dog_edge_2.png" width="200" height="auto">
                         <p>Edges </p>
                         <div>
             </p>
@@ -127,13 +127,13 @@ b_threshold = np.max(b_grad_magnitude) * 0.36
 b_edge_image = b_grad_magnitude > b_threshold
         </p>
         <p>
-        <img src="results_proj_2/dog_gradx.png" width="800" height="auto">
+        <img src="results_proj_2/dog_gradx.png" width="200" height="auto">
         <p>Gradient x </p>
-        <img src="results_proj_2/dog_grady.png" width="800" height="auto">
+        <img src="results_proj_2/dog_grady.png" width="200" height="auto">
         <p>Gradient y </p>
-        <img src="results_proj_2/dog_grad_mag.png" width="800" height="auto">
+        <img src="results_proj_2/dog_grad_mag.png" width="200" height="auto">
         <p>Gradient Magnitude </p>
-        <img src="results_proj_2/dog_edge.png" width="800" height="auto">
+        <img src="results_proj_2/dog_edge.png" width="200" height="auto">
         <p>Edges </p>
     </div>
 
@@ -148,18 +148,18 @@ b_edge_image = b_grad_magnitude > b_threshold
 
         <h3>Taj Mahal</h3>
         <p>
-        <img src="results_proj_2/blur_taj.png" width="800" height="auto">
+        <img src="results_proj_2/blur_taj.png" width="400" height="auto">
         <p> Blurred Version </p>
-        <img src="results_proj_2/sharp_taj.png" width="800" height="auto">
+        <img src="results_proj_2/sharp_taj.png" width="400" height="auto">
         <p> Sharpened Version </p>
     
     </div>
     
         <h3>Blue House</h3>
         <p>
-        <img src="results_proj_2/blur_house.png" width="800" height="auto">
+        <img src="results_proj_2/blur_house.png" width="400" height="auto">
         <p> Blurred Version </p>
-        <img src="results_proj_2/sharp_house.png" width="800" height="auto">
+        <img src="results_proj_2/sharp_house.png" width="400" height="auto">
         <p> Sharpened Version </p>
         
     </div>
@@ -171,45 +171,45 @@ b_edge_image = b_grad_magnitude > b_threshold
         </div>
         <h3> Derek The Cat</h3>
         <p>
-        <img src="results_proj_2/hybrid_derek_cat.png" width="800" height="auto">
+        <img src="results_proj_2/hybrid_derek_cat.png" width="400" height="auto">
         <p> Basic example. </p>
     </div>
     
 </div>
         <h3>Camel Lion</h3>
         <p>
-        <img src="results_proj_2/camel_lion.png" width="800" height="auto">
+        <img src="results_proj_2/camel_lion.png" width="400" height="auto">
         <p> Riding Lions in Egypt! </p>
     </div>
 
     </div>
         <h3> A Firework Tree </h3>
         <p>
-        <img src="results_proj_2/fire_tree.png" width="800" height="auto">
+        <img src="results_proj_2/fire_tree.png" width="400" height="auto">
         <p> Failure: Although you can see both, the fireworks do not fit well enough to merge them with the tree leaves (I tried :( ) </p>
     </div>
     
         <h3> My Favorite: Finding Real Life Edna Moda</h3>
         <p>
-        <img src="results_proj_2/similar_to_edna.png" width="800" height="auto">
+        <img src="results_proj_2/similar_to_edna.png" width="400" height="auto">
         <p> Hybrid </p>
 
     <h3> Frequency Analysis </h3>
         <p>
-        <img src="results_proj_2/freq_edna.png" width="800" height="auto">
+        <img src="results_proj_2/freq_edna.png" width="400" height="auto">
         <p> Frequencies Edna Moda </p>
 
     <p>
-        <img src="results_proj_2/freq_linda.png" width="800" height="auto">
+        <img src="results_proj_2/freq_linda.png" width="400" height="auto">
         <p> Frequencies Linda Hunters </p>
     <p>
-        <img src="results_proj_2/freq_low.png" width="800" height="auto">
+        <img src="results_proj_2/freq_low.png" width="400" height="auto">
         <p> Frequencies Low Pass (Linda Hunters) </p>
     <p>
-        <img src="results_proj_2/freq_high.png" width="800" height="auto">
+        <img src="results_proj_2/freq_high.png" width="400" height="auto">
         <p> Frequencies High Pass (Edna) </p>
     <p>
-        <img src="results_proj_2/freq_combined.png" width="800" height="auto">
+        <img src="results_proj_2/freq_combined.png" width="400" height="auto">
         <p> Frequencies Combined! </p>
         
     </div>
@@ -219,13 +219,13 @@ b_edge_image = b_grad_magnitude > b_threshold
         </div>
         <h3> Progress of Stacks </h3>
         <p>
-        <img src="results_proj_2/apple_progress.png" width="800" height="auto">
+        <img src="results_proj_2/apple_progress.png" width="400" height="auto">
         <p> Progress of Apple </p>
         <p>
-        <img src="results_proj_2/orange_progress.png" width="800" height="auto">
+        <img src="results_proj_2/orange_progress.png" width="400" height="auto">
         <p> Progress of Orange </p>
     <p>
-        <img src="results_proj_2/oraple_progress.png" width="800" height="auto">
+        <img src="results_proj_2/oraple_progress.png" width="400" height="auto">
         <p> The Magic Oraple! </p>
     </div>
 
@@ -236,14 +236,11 @@ b_edge_image = b_grad_magnitude > b_threshold
         </div>
         <h3> Finally the Oraple !</h3>
         <p>
-        <img src="results_proj_2/orapple.png" width="800" height="auto">
+        <img src="results_proj_2/orapple.png" width="400" height="auto">
         <p> Wao! </p>
     </div>
     
 </div>
-
-    
-    
     
 </body>
 </html>
