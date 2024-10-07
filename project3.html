@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 3 - Face Morphing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h2 {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .row img {
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Project 3</h1>
+
+    <h2>Overview:</h2>
+    <p>In this project I morphed different faces together, changed the shape of a face to that of another, and cross dissolved between the two of them to change the appearance. I also computed the mean face of a woman population and morphed my face into it, as well as it into me. This was a very interesting project visually and I really enjoyed it.</p>
+
+    <h2>Morphing two faces together</h2>
+    <p>For this part of the project, I decided to morph my face with my mom’s face.</p>
+
+    <h3>Part 1. Defining Correspondences</h3>
+    <p>The first thing that I did was to crop, align, and resize the pictures in order to have the same number of pixels and aspect ratio. Then I used the provided <a href="https://cal-cs180.github.io/fa23/hw/proj3/tool.html">tool</a> to map the correspondences in both images. I then added the four corners of the images and generated the Delaunay triangulation.</p>
+
+    <h4>Results:</h4>
+    <p><strong>Image A:</strong> Me (key points and triangulation)</p>
+    <img src="results_proj_3/triangulation_me.png" alt="Me (key points and triangulation)">
+    <p><strong>Image B:</strong> My mom (key points and triangulation)</p>
+    <img src="results_proj_3/triangulation_mom.png" alt="My mom (key points and triangulation)">
+
+    <h3>Part 2. Computing the "Mid-way Face"</h3>
+    <p>I computed the average shape, warped both faces into this shape, and for each triangle in the triangulation:</p>
+    <ul>
+        <li>Computed the affine transformation matrix</li>
+        <li>Performed inverse warping</li>
+        <li>Averaged the colors together (cross-dissolve)</li>
+    </ul>
+
+    <h4>Results:</h4>
+    <div class="row">
+        <div>
+            <p><strong>Me (original):</strong></p>
+            <img src="results_proj_3/me.jpg" alt="Me (original)">
+        </div>
+        <div>
+            <p><strong>Midway face:</strong></p>
+            <img src="results_proj_3/mid_face.png" alt="Midway face">
+        </div>
+        <div>
+            <p><strong>My mom (original):</strong></p>
+            <img src="results_proj_3/mom.jpg" alt="My mom (original)">
+        </div>
+    </div>
+
+    <h3>Part 3. The Morph Sequence</h3>
+    <p>I created a morph sequence of 60 frames with a duration of 200 ms per frame by using part 2 and a range of warp and dissolve weights between [0,1].</p>
+
+    <h4>Results:</h4>
+    <img src="results_proj_3/morph_sequence.gif" alt="Morph sequence GIF">
+
+    <h2>Blending with the population</h2>
+
+    <h3>Part 4. The "Mean face" of a population</h3>
+    <p>For this part of the project, I took the pictures of women from the FEI Face Database and computed the mean face of this subpopulation, which has 100 samples.</p>
+
+    <h4>Results:</h4>
+    <p><strong>Average face image:</strong></p>
+    <img src="results_proj_3/avg_woman_pop.png" alt="Average face image">
+    
+    <p>I then morphed each of the faces in the dataset into the average shape. Here are some examples:</p>
+    <div class="row">
+        <img src="results_proj_3/morphed_results/morphed_results1a_morphed.jpg" alt="Example 1">
+        <img src="results_proj_3/morphed_results/morphed_results31a_morphed.jpg" alt="Example 2">
+        <img src="results_proj_3/morphed_results/morphed_results51a_morphed.jpg" alt="Example 3">
+    </div>
+    <div class="row">
+        <img src="results_proj_3/morphed_results/morphed_results61a_morphed.jpg" alt="Example 4">
+        <img src="results_proj_3/morphed_results/morphed_results81a_morphed.jpg" alt="Example 5">
+        <img src="results_proj_3/morphed_results/morphed_results91a_morphed.jpg" alt="Example 6">
+    </div>
+
+    <p>Here is me warped into the average shape of the population:</p>
+    <img src="results_proj_3/me_into_avg.png" alt="Me warped into average shape">
+
+    <p>And the average shape of the population warped into my geometry:</p>
+    <img src="results_proj_3/avg_into_me.png" alt="Average shape warped into my geometry">
+
+    <h3>Part 5. Caricatures: Extrapolating from the mean</h3>
+    <p>I extrapolated from the mean of the previous subpopulation in order to create a caricature of myself. I used -0.8 as my weight for warping to do this.</p>
+
+    <h4>Results:</h4>
+    <img src="results_proj_3/caricature.png" alt="Caricature of me">
+
+    <h2>Bells and Whistles</h2>
+    <p>I changed my gender from woman to man by using the average Spanish men image that I found online (my ancestors are Spanish).</p>
+
+    <h4>Results:</h4>
+    <div class="row">
+        <img src="results_proj_3/me.jpg" alt="Me">
+        <img src="results_proj_3/spain_man.png" alt="Average Spanish man">
+    </div>
+
+    <div>
+        <h4>Results:</h4>
+    </div>
+    
+    <p><strong>Morphing just the shape:</strong> I warped my face into the shape of the average Spanish man.</p>
+    <img src="results_proj_3/me_into_men.png" alt="Just the shape morph">
+
+    <p><strong>Morphing just the appearance:</strong> I warped the face of the average Spanish man into my shape and cross-dissolved it with a 0.5 ratio.</p>
+    <img src="results_proj_3/man_into_me.png" alt="Just the appearance morph">
+
+    <p><strong>Me as a Spanish man:</strong> I warped my face into the shape of the average Spanish man and then cross-dissolved it with a 0.5 ratio.</p>
+    <img src="results_proj_3/me_as_man.png" alt="Me as a Spanish man">
+</body>
+</html>
