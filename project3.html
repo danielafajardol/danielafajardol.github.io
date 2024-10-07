@@ -46,10 +46,12 @@
     <p>The first thing that I did was to crop, align, and resize the pictures in order to have the same number of pixels and aspect ratio. Then I used the provided <a href="https://cal-cs180.github.io/fa23/hw/proj3/tool.html">tool</a> to map the correspondences in both images. I then added the four corners of the images and generated the Delaunay triangulation.</p>
 
     <h4>Results:</h4>
-    <p><strong>Image A:</strong> Me (key points and triangulation)</p>
-    <img src="results_proj_3/triangulation_me.png" alt="Me (key points and triangulation)">
-    <p><strong>Image B:</strong> My mom (key points and triangulation)</p>
-    <img src="results_proj_3/triangulation_mom.png" alt="My mom (key points and triangulation)">
+    <div class="row">
+        <p><strong>Image A:</strong> Me (key points and triangulation)</p>
+        <img src="results_proj_3/triangulation_me.png" alt="Me (key points and triangulation)">
+        <p><strong>Image B:</strong> My mom (key points and triangulation)</p>
+        <img src="results_proj_3/triangulation_mom.png" alt="My mom (key points and triangulation)">
+    </div>
 
     <h3>Part 2. Computing the "Mid-way Face"</h3>
     <p>I computed the average shape, warped both faces into this shape, and for each triangle in the triangulation:</p>
@@ -63,15 +65,15 @@
     <div class="row">
         <div>
             <p><strong>Me (original):</strong></p>
-            <img src="results_proj_3/me.jpg" alt="Me (original)">
+            <img src="results_proj_3/me.jpg" alt="Me (original)" width="400" height="400">
         </div>
         <div>
             <p><strong>Midway face:</strong></p>
-            <img src="results_proj_3/mid_face.png" alt="Midway face">
+            <img src="results_proj_3/mid_face.png" alt="Midway face" width="400" height="400">
         </div>
         <div>
             <p><strong>My mom (original):</strong></p>
-            <img src="results_proj_3/mom.jpg" alt="My mom (original)">
+            <img src="results_proj_3/mom.jpg" alt="My mom (original)" width="400" height="400">
         </div>
     </div>
 
@@ -117,7 +119,7 @@
     <h2>Bells and Whistles</h2>
     <p>I changed my gender from woman to man by using the average Spanish men image that I found online (my ancestors are Spanish).</p>
 
-    <h4>Results:</h4>
+    <h4>Original Images:</h4>
     <div class="row">
         <img src="results_proj_3/me.jpg" alt="Me">
         <img src="results_proj_3/spain_man.png" alt="Average Spanish man">
@@ -128,12 +130,12 @@
     </div>
     
     <p><strong>Morphing just the shape:</strong> I warped my face into the shape of the average Spanish man.</p>
-    <img src="results_proj_3/me_into_men.png" alt="Just the shape morph">
+    <img src="results_proj_3/me_into_men.png" alt="Just the shape morph" width="400" height="400">
 
     <p><strong>Morphing just the appearance:</strong> I warped the face of the average Spanish man into my shape and cross-dissolved it with a 0.5 ratio.</p>
-    <img src="results_proj_3/man_into_me.png" alt="Just the appearance morph">
+    <img src="results_proj_3/man_into_me.png" alt="Just the appearance morph" width="400" height="400">
 
     <p><strong>Me as a Spanish man:</strong> I warped my face into the shape of the average Spanish man and then cross-dissolved it with a 0.5 ratio.</p>
-    <img src="results_proj_3/me_as_man.png" alt="Me as a Spanish man">
+    <img src="results_proj_3/me_as_man.png" alt="Me as a Spanish man" width="400" height="400">
 </body>
 </html>
