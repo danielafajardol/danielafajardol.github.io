@@ -60,16 +60,16 @@
         <img src="source_proj4/im5_bww.jpg" alt="Image 7">
     </div>
 
-    <h4>Mosaic 3 Images: Lecture Wednesday</h4>
+    <h4>Mosaic 3 Images: Pretty House I Saw While Biking</h4>
     <div class="mosaic">
-        <img src="source_proj4/im1_class.jpg" alt="Image 8">
-        <img src="source_proj4/im2_class.jpg" alt="Image 9">
+        <img src="source_proj4/im1_bike.jpg" alt="Image 8">
+        <img src="source_proj4/im2_bike.jpg" alt="Image 9">
     </div>
 
-    <h4>Mosaic 4 Images: Li Ka Shing</h4>
+    <h4>Mosaic 4 Images: East Asian Books</h4>
     <div class="mosaic">
-        <img src="source_proj4/im1_lk.jpg" alt="Image 10">
-        <img src="source_proj4/im3_lk.jpg" alt="Image 11">
+        <img src="source_proj4/im1_books.jpg" alt="Image 10">
+        <img src="source_proj4/im2_books.jpg" alt="Image 11">
     </div>
 
     <h3>Part 2: Recover Homographies</h3>
@@ -221,21 +221,21 @@
         With the descriptors extracted, I matched features between images using the Nearest-Neighbor method. For each descriptor in one image, I calculated the sum of squared differences with all descriptors in the other image, identifying the closest ones. To make the matches more reliable, I applied Lowe's ratio test, which checks that the closest match is noticeably better than the second-closest by a threshold (I chose it to be 0.4). This step helped filter out weaker matches, making the overall process more accurate.
     </p>
 
-    <h3 style="text-align:center;">Feature Matches</h3>
+    <h3 style="text-align:center;">Feature Matches Mosaic 1</h3>
     <div class="images-row">
         <!-- Replace these with actual image paths -->
         <img src="results_proj_4b/mosaic1/corr_im1.png" alt="ANMS Mosaic 1 Image 1">
         <img src="results_proj_4b/mosaic1/corr_im2.png" alt="ANMS Mosaic 1 Image 2">
     </div>
 
-    <h3 style="text-align:center;">Corners after ANMS for Mosaic 2</h3>
+    <h3 style="text-align:center;">Feature Matches Mosaic 2</h3>
     <div class="images-row">
         <!-- Replace these with actual image paths -->
         <img src="results_proj_4b/mosaic2/corr_im1.png" alt="ANMS Mosaic 2 Image 1">
         <img src="results_proj_4b/mosaic2/corr_im2.png" alt="ANMS Mosaic 2 Image 2">
     </div>
 
-    <h3 style="text-align:center;">Corners after ANMS for Mosaic 3</h3>
+    <h3 style="text-align:center;">Feature Matches Mosaic 3</h3>
     <div class="images-row">
         <!-- Replace these with actual image paths -->
         <img src="results_proj_4b/mosaic3/corr_im1.png" alt="ANMS Mosaic 3 Image 1">
@@ -277,7 +277,7 @@
     <div class="images-row">
         <!-- Replace with actual images for Mosaic 3 -->
         <img src="results_proj_4b/mosaic3/mosaic_3_manual.png" alt="Mosaic 3 Manual">
-        <img src="results_proj_4b/mosaic2/mosaic_2_automatic.png" alt="Mosaic 3 Automatic">
+        <img src="results_proj_4b/mosaic3/mosaic_3_automatic.png" alt="Mosaic 3 Automatic">
     </div>
     <div class="result-label">
         <strong>Manual</strong> | <strong>Automatic</strong>
