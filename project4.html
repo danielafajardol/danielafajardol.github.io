@@ -37,6 +37,7 @@
 <body>
     <h1>Project 4: Daniela Fajardo</h1>
 
+    <h1>Part A</h1>
     <h2>Overview:</h2>
     <p>
         For this part of the project, we learned how to use homographies in order to create projections of scenes and change perspectives of objects.
@@ -150,6 +151,137 @@
     <p>
         2 images. Learned how change in perspective of the light can influence the mosaic.
     </p>
+
+    <h1>Part B</h1>
+
+    <h2>Overview:</h2>
+    <p>
+        For this part of the project, we learned how to use corners to do feature matching and produce correspondences between pictures in order to then build mosaics.
+    </p>
+
+    <h2>Corner Feature Detection</h2>
+    <p>
+        I used the Harris Corner Detection method to identify unique feature points within each image.
+    </p>
+
+    <h3 style="text-align:center;">Images for Mosaic 1</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic1/harris_im_1.png" alt="Mosaic 1 Image 1">
+        <img src="results_proj_4b/mosaic1/harris_im_2.png" alt="Mosaic 1 Image 2">
+    </div>
+
+    <h3 style="text-align:center;">Images for Mosaic 2</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic2/harris_im1.png" alt="Mosaic 2 Image 1">
+        <img src="results_proj_4b/mosaic2/harris_im2.png" alt="Mosaic 2 Image 2">
+    </div>
+
+    <h3 style="text-align:center;">Images for Mosaic 3</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic3/harris_im1.png" alt="Mosaic 3 Image 1">
+        <img src="results_proj_4b/mosaic3/harris_im2.png" alt="Mosaic 3 Image 2">
+    </div>
+
+    <h2>Adaptive Non-Maximal Suppression (ANMS)</h2>
+    <p>
+        To avoid clustering of corner points, I applied Adaptive Non-Maximal Suppression (ANMS) to select a spread of high-quality corners. For each point, I determined a "suppression radius" that measured the distance to the nearest stronger corner. I then iterated through each point, comparing its strength to those around it, and discarded any that didn’t fall among the strongest within a specified radius. This process produced a well-distributed set of corners across the image.
+    </p>
+
+    <h3 style="text-align:center;">Corners after ANMS</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic1/anms_im1.png" alt="ANMS Mosaic 1 Image 1">
+        <img src="results_proj_4b/mosaic1/anms_im2.png" alt="ANMS Mosaic 1 Image 2">
+    </div>
+
+    <h3 style="text-align:center;">Corners after ANMS for Mosaic 2</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic2/anms_im1.png" alt="ANMS Mosaic 2 Image 1">
+        <img src="results_proj_4b/mosaic2/anms_im2.png" alt="ANMS Mosaic 2 Image 2">
+    </div>
+
+    <h3 style="text-align:center;">Corners after ANMS for Mosaic 3</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic3/anms_im1.png" alt="ANMS Mosaic 3 Image 1">
+        <img src="results_proj_4b/mosaic3/anms_im2.png" alt="ANMS Mosaic 3 Image 2">
+    </div>
+
+    <h2>Feature Descriptor Extraction</h2>
+    <p>
+        For each corner, I extracted a descriptor that captures the surrounding image structure. This involved isolating a window around each corner, downsampling it for stability, and applying Gaussian blurring to reduce noise. I then normalized each descriptor for consistent brightness and contrast, making it more reliable for matching.
+    </p>
+
+    <h2>Feature Matching</h2>
+    <p>
+        With the descriptors extracted, I matched features between images using the Nearest-Neighbor method. For each descriptor in one image, I calculated the sum of squared differences with all descriptors in the other image, identifying the closest ones. To make the matches more reliable, I applied Lowe's ratio test, which checks that the closest match is noticeably better than the second-closest by a threshold (I chose it to be 0.4). This step helped filter out weaker matches, making the overall process more accurate.
+    </p>
+
+    <h3 style="text-align:center;">Feature Matches</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic1/corr_im1.png" alt="ANMS Mosaic 1 Image 1">
+        <img src="results_proj_4b/mosaic1/corr_im2.png" alt="ANMS Mosaic 1 Image 2">
+    </div>
+
+    <h3 style="text-align:center;">Corners after ANMS for Mosaic 2</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic2/corr_im1.png" alt="ANMS Mosaic 2 Image 1">
+        <img src="results_proj_4b/mosaic2/corr_im2.png" alt="ANMS Mosaic 2 Image 2">
+    </div>
+
+    <h3 style="text-align:center;">Corners after ANMS for Mosaic 3</h3>
+    <div class="images-row">
+        <!-- Replace these with actual image paths -->
+        <img src="results_proj_4b/mosaic3/corr_im1.png" alt="ANMS Mosaic 3 Image 1">
+        <img src="results_proj_4b/mosaic3/corr_im2.png" alt="ANMS Mosaic 3 Image 2">
+    </div>
+
+    <h2>Homography Calculation with RANSAC</h2>
+    <p>
+        To calculate the transformation matrix (homography) between the images, I used RANSAC to deal with outliers in the matches. The process involves randomly selecting small sets of matched feature points, computing a homography for each set, and seeing how well that transformation aligns the other points. By repeating this several times, RANSAC identifies the homography that fits the most points accurately, which allows me to warp one image so it aligns correctly with the other.
+    </p>
+
+    <h2>Creating the Mosaics</h2>
+    <p>
+        I proceeded as in part A with merging and blending.
+    </p>
+
+    <h2>Results</h2>
+    <h3 style="text-align:center;">Mosaic 1</h3>
+    <div class="images-row">
+        <!-- Replace with actual images for Mosaic 1 -->
+        <img src="results_proj_4b/mosaic1/mosaic_1_manual.png" alt="Mosaic 1 Manual">
+        <img src="results_proj_4b/mosaic1/mosaic_1_automatic.jpg" alt="Mosaic 1 Automatic">
+    </div>
+    <div class="result-label">
+        <strong>Manual</strong> | <strong>Automatic</strong>
+    </div>
+
+    <h3 style="text-align:center;">Mosaic 2</h3>
+    <div class="images-row">
+        <!-- Replace with actual images for Mosaic 2 -->
+        <img src="results_proj_4b/mosaic2/mosaic_2_manual.png" alt="Mosaic 2 Manual">
+        <img src="results_proj_4b/mosaic2/mosaic_2_automatic.png" alt="Mosaic 2 Automatic">
+    </div>
+    <div class="result-label">
+        <strong>Manual</strong> | <strong>Automatic</strong>
+    </div>
+
+    <h3 style="text-align:center;">Mosaic 3</h3>
+    <div class="images-row">
+        <!-- Replace with actual images for Mosaic 3 -->
+        <img src="results_proj_4b/mosaic3/mosaic_3_manual.png" alt="Mosaic 3 Manual">
+        <img src="results_proj_4b/mosaic2/mosaic_2_automatic.png" alt="Mosaic 3 Automatic">
+    </div>
+    <div class="result-label">
+        <strong>Manual</strong> | <strong>Automatic</strong>
+    </div>
 
 </body>
 </html>
