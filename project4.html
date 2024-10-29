@@ -39,7 +39,7 @@
             margin: 20px 0;
         }
         .images-row img {
-            width: 45%;
+            width: 100%;
         }
         .result-label {
             text-align: center;
@@ -56,16 +56,16 @@
         For this part of the project, we learned how to use homographies in order to create projections of scenes and change perspectives of objects.
     </p>
 
-    <h3>Part 1: Shoot the pictures</h3>
+    <h3 style="text-align:center;">Part 1: Shoot the pictures</h3>
 
-    <h4>Mosaic 1 Images: East Asian Library</h4>
+    <h4 style="text-align:center;">Mosaic 1 Images: East Asian Library</h4>
     <div class="mosaic">
         <img src="source_proj4/im1_ea.jpg" alt="Image 1">
         <img src="source_proj4/im2_ea.jpg" alt="Image 2">
         <img src="source_proj4/im3_ea.jpg" alt="Image 3">
     </div>
 
-    <h4>Mosaic 2 Images: BWW</h4>
+    <h4 style="text-align:center;">Mosaic 2 Images: BWW</h4>
     <div class="mosaic-4">
         <img src="source_proj4/im2_bww.jpg" alt="Image 4">
         <img src="source_proj4/im3_bww.jpg" alt="Image 5">
@@ -73,19 +73,19 @@
         <img src="source_proj4/im5_bww.jpg" alt="Image 7">
     </div>
 
-    <h4>Mosaic 3 Images: Pretty House I Saw While Biking</h4>
+    <h4 style="text-align:center;">Mosaic 3 Images: Pretty House I Saw While Biking</h4>
     <div class="mosaic">
         <img src="source_proj4/im1_bike.jpg" alt="Image 8">
         <img src="source_proj4/im2_bike.jpg" alt="Image 9">
     </div>
 
-    <h4>Mosaic 4 Images: East Asian Books</h4>
+    <h4 style="text-align:center;">Mosaic 4 Images: East Asian Books</h4>
     <div class="mosaic">
         <img src="source_proj4/im1_books.jpg" alt="Image 10">
         <img src="source_proj4/im2_books.jpg" alt="Image 11">
     </div>
 
-    <h3>Part 2: Recover Homographies</h3>
+    <h3 style="text-align:center;">Part 2: Recover Homographies</h3>
     <p>
         In order to warp the images into alignment to be able to create the mosaics, I needed to recover the parameters of the transformation which in this case is a homography. In order to do this, I took two sets of points, pts_a and pts_b. For explanation purposes, let pts_a = [x, y].T and pts_b = [x’, y’].T.
     </p>
@@ -96,7 +96,7 @@
         <img src="source_proj4/logic.jpeg" alt="Homography Logic" style="display: block; margin: 0 auto;">
     </div>
 
-    <h3>Part 3: Warp the images</h3>
+    <h3 style="text-align:center;">Part 3: Warp the images</h3>
     <p>
         Now we can use the calculated homographies to take an image and change its perspective to match a certain shape (be it another image or take a part of this image and rectify it).
     </p>
@@ -112,28 +112,28 @@
         <li>For each of the image channels, use griddata to fill in the corresponding pixels.</li>
     </ul>
 
-    <h4>Here are some examples of rectification using homographies:</h4>
+    <h4 style="text-align:center;">Here are some examples of rectification using homographies:</h4>
 
-    <h4>Example 1: iPad</h4>
+    <h4 style="text-align:center;">Example 1: iPad</h4>
     <div class="rectification">
         <img src="results_proj_4/ipad.jpg" alt="Original iPad">
         <img src="results_proj_4/rectified_ipad.jpg" alt="Rectified iPad">
     </div>
 
-    <h4>Example 2: Charger</h4>
+    <h4 style="text-align:center;">Example 2: Charger</h4>
     <div class="rectification">
         <img src="results_proj_4/charger.jpg" alt="Original Charger">
         <img src="results_proj_4/rectified_charger.jpg" alt="Rectified Charger">
     </div>
 
-    <h3>Part 4: Blend the images into a Mosaic</h3>
+    <h3 style="text-align:center;">Part 4: Blend the images into a Mosaic</h3>
     <p>
         Now we make homographies interesting. The idea is to take the previously taken pictures of a scene and put them together into a mosaic. For the mosaics, I warped all images into one of the images, padded them as necessary so they have the same size, and then used alpha blending. I used scipy.ndimage.distance_transform_edt to get the distance of each of the pixels of the images from the center, and blended such pixels with a weight of 1 when in the center of the image. The weight of the pixels in the new image decreases as the pixels move away from the center of the image they belong to.
     </p>
 
-    <h4>Here are some examples of Mosaics I created:</h4>
+    <h4 style="text-align:center;">Here are some examples of Mosaics I created:</h4>
 
-    <h4>Mosaic 1 Images: East Asian Library</h4>
+    <h4 style="text-align:center;">Mosaic 1 Images: East Asian Library</h4>
     <div>
         <img src="results_proj_4/mosaic_1.jpg" alt="East Asian Library Mosaic" style="display: block; margin: 0 auto;">
     </div>
@@ -141,7 +141,7 @@
         This was my first attempt. This is a mosaic made out of 3 images. I decided to take various pictures closer together so I had more points of overlap and could understand the results more easily.
     </p>
 
-    <h4>Mosaic 2 Images: BWW</h4>
+    <h4 style="text-align:center;">Mosaic 2 Images: BWW</h4>
     <div>
         <img src="results_proj_4/mosaic_2.jpg" alt="BWW Mosaic" style="display: block; margin: 0 auto;">
     </div>
@@ -149,7 +149,7 @@
         Outside mosaic made of 4 images. Alignment is difficult around items with a lot of details. Learned that with more correspondences we get clearer mosaics.
     </p>
 
-    <h4>Mosaic 3 Images: A Pretty House I saw while biking</h4>
+    <h4 style="text-align:center;">Mosaic 3 Images: A Pretty House I saw while biking</h4>
     <div>
         <img src="results_proj_4/mosaic_3.jpg" alt="House I Saw While Biking" style="display: block; margin: 0 auto;">
     </div>
@@ -157,7 +157,7 @@
         Just for fun. 2 images.
     </p>
 
-    <h4>Mosaic 4 Images: East Asian Books</h4>
+    <h4 style="text-align:center;">Mosaic 4 Images: East Asian Books</h4>
     <div>
         <img src="results_proj_4/mosaic_4.jpg" alt="East Asian Books" style="display: block; margin: 0 auto;">
     </div>
@@ -177,21 +177,21 @@
         I used the Harris Corner Detection method to identify unique feature points within each image.
     </p>
 
-    <h3 style="text-align:center;">Images for Mosaic 1</h3>
+    <h3 style="text-align:center;">Harris Corners for Mosaic 1</h3>
     <div class="images-row">
         <!-- Replace these with actual image paths -->
         <img src="results_proj_4b/mosaic1/harris_im_1.png" alt="Mosaic 1 Image 1">
         <img src="results_proj_4b/mosaic1/harris_im2.png" alt="Mosaic 1 Image 2">
     </div>
 
-    <h3 style="text-align:center;">Images for Mosaic 2</h3>
+    <h3 style="text-align:center;">Harris Corners for Mosaic 2</h3>
     <div class="images-row">
         <!-- Replace these with actual image paths -->
         <img src="results_proj_4b/mosaic2/harris_im1.png" alt="Mosaic 2 Image 1">
         <img src="results_proj_4b/mosaic2/harris_im2.png" alt="Mosaic 2 Image 2">
     </div>
 
-    <h3 style="text-align:center;">Images for Mosaic 3</h3>
+    <h3 style="text-align:center;">Harris Corners for Mosaic 3</h3>
     <div class="images-row">
         <!-- Replace these with actual image paths -->
         <img src="results_proj_4b/mosaic3/harris_im1.png" alt="Mosaic 3 Image 1">
@@ -275,7 +275,7 @@
             <div class="result-label"><strong>Manual</strong></div>
         </div>
         <div style="text-align: center; display: inline-block; margin: 0 10px;">
-            <img src="results_proj_4b/mosaic1/mosaic_1_automatic.jpg" alt="Mosaic 1 Automatic">
+            <img src="results_proj_4b/mosaic1/mosaic_1_automatic.png" alt="Mosaic 1 Automatic">
             <div class="result-label"><strong>Automatic</strong></div>
         </div>
     </div>
