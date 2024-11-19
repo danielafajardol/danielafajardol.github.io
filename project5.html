@@ -184,7 +184,14 @@
             <img src="results_proj_5/1.6.im.png" alt="Classifier-Free Guidance Results">
 
             <h3>1.7 Image-to-Image Translation</h3>
-            <p>Progressive refinement of noisy images:</p>
+            <p>
+                In this step, I explored image-to-image translation, where I applied a noise and 
+                denoising process to make gradual edits to an image. Starting with a real test image, 
+                I added noise and used the iterative_denoise_cfg function to progressively refine the 
+                image, simulating edits based on the prompt "a high quality photo." By adjusting the 
+                noise levels, I created a series of images that became closer to the original, with 
+                the edits becoming more refined as the noise level decreased.
+            </p>
             <div class="images-row">
                 <figure>
                     <img src="results_proj_5/1.7.im1.png" alt="Test Im1">
@@ -211,6 +218,165 @@
                 <figure>
                     <img src="results_proj_5/1.7.im3_results.png" alt="Test Im3 Results">
                     <figcaption>Pyramid Results</figcaption>
+                </figure>
+            </div>
+
+            <h3>1.7.1 Editing Hand-Drawn and Web Images</h3>
+            <p>
+                In this step, I experimented with editing non-realistic images, such as hand-drawn 
+                sketches and web images, using the same diffusion model procedure. By applying noise 
+                and denoising iteratively, I was able to project these images onto the natural image
+                manifold, transforming them into more realistic versions.
+                I started by downloading a web image and applying the denoising 
+                edits at varying noise levels. I also drew my own hand-drawn images, 
+                following the same process to see how the model refined them. The 
+                results showed how the diffusion model can creatively enhance and modify
+                both hand-drawn and web-based images, gradually making them look more
+                natural and realistic.
+
+            </p>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/1.7.1.web.png" alt="Web">
+                    <figcaption>Web Image: Venice Painting</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.7.1.web_results.png" alt="Web Results">
+                    <figcaption>Results</figcaption>
+                </figure>
+            </div>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/1.7.1.hand_im1.png" alt="Painting 1">
+                    <figcaption>Hand-Drawn 1</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.7.1.hand_im1_results.png" alt="Painting 1 Results">
+                    <figcaption>Results</figcaption>
+                </figure>
+            </div>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/1.7.1.hand_im2.png" alt="Painting 2">
+                    <figcaption>Hand-Drawn 2</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.7.1.hand_im2_results.png" alt="Painting 2 Results">
+                    <figcaption>Results</figcaption>
+                </figure>
+            </div>
+
+            <h3>1.7.2 Inpainting</h3>
+            <p>
+                In this step, I implemented inpainting, which allows us to modify specific 
+                parts of an image while preserving the rest. Using a binary mask, I applied 
+                the diffusion model to create new content wherever the mask is active (set to 1), 
+                while leaving the other areas of the image untouched.
+                To do this, I started with the original image and the mask, running the diffusion model 
+                denoising loop. At each step, I ensured that the pixels outside the mask were replaced with
+                new content, while maintaining the existing content where the mask was 0. I used this 
+                technique to inpaint the top of the Campanile and applied similar edits to my own images, 
+                experimenting with different masks to create unique results.
+
+
+            </p>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/1.7.2.mask1.png" alt="Mask1">
+                    <figcaption>Campanile Mask</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.7.2.mask1_results.png" alt="Results">
+                    <figcaption>Results</figcaption>
+                </figure>
+            </div>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/1.7.2.mask2.png" alt="Mask 2">
+                    <figcaption>Pyramid Mask</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.7.2.mask2_results.png" alt="Results">
+                    <figcaption>Results</figcaption>
+                </figure>
+            </div>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/1.7.2.mask3.png" alt="Mask 3">
+                    <figcaption>House Mask</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.7.2.mask3_results.png" alt="Results">
+                    <figcaption>Results</figcaption>
+                </figure>
+            </div>
+
+            <h3>1.7.3 Text Conditioned Image-to-Image Translation</h3>
+            <p>
+                In this step, I extended the inpainting process by incorporating text prompts, enabling more controlled edits.
+            </p>
+            <img src="results_proj_5/1.7.3.im1.png" alt="Rocket">
+            <figcaption>"a rocket ship"</figcaption>
+            <img src="results_proj_5/1.7.3.im3.png" alt="Rocket">
+            <figcaption>"a pencil"</figcaption>
+            <img src="results_proj_5/1.7.3.im2.png" alt="Hat">
+            <figcaption>"a man wearing a hat"</figcaption>
+        
+            <h3>1.8 Visual Anagrams</h3>
+            <p>
+                In this part of the project, I implemented Visual Anagrams, using 
+                diffusion models to generate optical illusions. The idea was to create
+                an image that, when viewed in one orientation, portrays one scene, but
+                when flipped upside down, reveals an entirely different scene.
+                For this, I used two text prompts: one for the original image 
+                and one for the flipped image. The process involved denoising 
+                the image normally for one prompt and denoising the flipped 
+                version of the image for the second prompt. By averaging the 
+                noise estimates from both steps, I achieved a hybrid image that
+                displays different scenes depending on its orientation.
+
+            </p>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/1.8.im1.png" alt="Im1">
+                    <figcaption>'an oil painting of an old man' and 'an oil painting of people around a campfire'</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.8.im2.png" alt="Im2">
+                    <figcaption>'a man wearing a hat' and 'an oil painting of a snowy mountain village'</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.8.im3.png" alt="Im3">
+                    <figcaption>'a photo of a hipster barista' and 'a photo of a dog'</figcaption>
+                </figure>
+            </div>
+
+            <h3>1.10 Hybrid Images</h3>
+            <p>
+                In this part of the project, I implemented Hybrid Images using diffusion models. 
+                The goal was to create images that reveal different scenes depending on the 
+                viewer's distance. This technique combines low and high-frequency components 
+                from two different prompts to produce a composite image with distinct features 
+                at varying scales.
+                The process involved using two separate text prompts and obtaining their 
+                noise estimates using a diffusion model. For one prompt, the low-frequency 
+                components were preserved, while for the other, the high-frequency components
+                 were retained. By combining these components, I generated an image that 
+                 looks like one thing from a distance and transforms into something 
+                 entirely different when viewed up close.
+            </p>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/1.10.im1.png" alt="Im1">
+                    <figcaption>Looks like a skull from far away but a waterfall from close up</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.10.im2.png" alt="Im2">
+                    <figcaption>Looks like "a rocket ship" from far away but 'a photo of the amalfi cost' from close up</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/1.10.im3.png" alt="Im3">
+                    <figcaption>Looks like 'an oil painting of a snowy mountain village' from far away but 'an oil painting of people around a campfire' from close up</figcaption>
                 </figure>
             </div>
         </section>
