@@ -384,28 +384,111 @@
         <section>
             <h2>Part B: Training Diffusion Models from Scratch</h2>
             <h3>Overview</h3>
-            <p>In part B, I trained my own diffusion model on the MNIST dataset.</p>
+            <p>In part B, I trained my own diffusion model on the MNIST.</p>
+
+            <h3>Part 1: Training a Single-Step Denoising UNet</h3>
 
             <h3>1.1 Implementing the UNet</h3>
-            <p>The UNet architecture was implemented for image denoising:</p>
-            <img src="image_placeholder" alt="UNet Architecture Visualization">
+            <p>In this part of the project, I implemented the UNet architecture 
+                for image denoising in diffusion models.
+            </p>
+            <img src="results_proj_5/b_1.1.png" alt="UNet Architecture Visualization">
 
-            <h3>1.2 Training a Single-Step Denoiser</h3>
-            <p>Training results over 5 epochs:</p>
-            <p>Training Loss Curve:</p>
-            <img src="image_placeholder" alt="Training Loss Curve">
-            <p>Results after 5 epochs:</p>
-            <img src="image_placeholder" alt="Denoised Images">
+            <h3>1.2 Using the UNet to Train a Denoiser</h3>
+            <p>
+                We aim to solve the following denoising problem: Given a noisy image z, we aim to train a denoiser 
+                Dθ such that it maps z to a clean image x. 
+                z=x+oe, where e~N(0,I)
+                Here we can visualize the different denoising processes over o = [0.0, 0.2, 0.4, 0.5, 0.6, 0.8, 1.0]
+            </p>
+            <img src="results_proj_5/b_1.2.png" alt="Different noises">
 
-            <h3>2.2 Training a Time-Conditioned Diffusion Model</h3>
-            <p>Time-conditioned UNet trained over 20 epochs:</p>
-            <img src="image_placeholder" alt="Time-Conditioned UNet Loss Curve">
-            <p>Generated samples:</p>
-            <img src="image_placeholder" alt="Generated Samples">
+            <h3>1.2.1 Training</h3>
+            <p>
+                I trained a UNet model to denoise images by mapping noisy inputs to clean versions using the MNIST dataset. 
+                The model was trained for 5 epochs. I used the Adam optimizer, a hidden dimension of 128 and batch size of 256.
+            </p>
+            <h2>Training Loss Curve</h2>
+            <img src="results_proj_5/b_1.2_training_curve.png" alt="Training Loss Curve">
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/b_1.2.1_epoch.png" alt="Epoch 1">
+                    <figcaption>Results on digits from the test set after 1 epoch of training</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/b_1.2_5epoch.png" alt="Epoch 5">
+                    <figcaption>Results on digits from the test set after 5 epochs of training</figcaption>
+                </figure>
+            </div>
+            <h3>1.2.2 Out-of-Distribution Testing</h3>
+            <p>
+                See how the denoiser performs on different σ's that it wasn't trained for.
+            </p>
+            <img src="results_proj_5/b_1.2_out_of_bounds.png" alt="Out of Bounds">
+            
+            <h3>Part 2: Training a Diffusion Model</h3>
+            <p>
+                In this section, we changed our UNet to predict the added noise ϵ instead of the clean image x.
 
-            <h3>2.4 Adding Class Conditioning</h3>
-            <p>Class-conditioned UNet results with guided image generation:</p>
-            <img src="image_placeholder" alt="Class-Conditioned Results">
+                First I worked on training a diffusion model using a time-conditioned UNet to gradually 
+                denoise images and generate realistic samples. Later I introduced class-conditioning to 
+                give more control over the generated images. 
+
+            </p>
+
+            <h3>2.1 Adding Time Conditioning to UNet</h3>
+            <p>
+                I modified the UNet to include time conditioning, embedding the timestep into the network with FCBlocks. 
+            </p>
+            <img src="results_proj_5/b_2.1_im.png" alt="Explanation">
+
+            <h3>2.2 Training the UNet</h3>
+            <p>
+                The time-conditioned UNet was trained on MNIST, learning to predict noise from noisy images. 
+                I used the Adam optimizer and exponential learning rate decay, batch size of 128, and a hidden 
+                dimension of 64. I trained the model over 20 epochs.
+            </p>
+            <h2>Time-Conditioned UNet training loss curve</h2>
+            <img src="results_proj_5/b_2.2_training_curve.png" alt="Training Curve">
+
+            <h3>2.3 Sampling from the UNet</h3>
+            <p>
+                Starting with pure noise, the trained UNet iteratively denoised images to produce realistic MNIST digits.
+            </p>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/b_2.3_sample_epoc5.png" alt="Epoch 5">
+                    <figcaption>Epoch 5</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/b_2.3_sample_epoch20.png" alt="Epoch 20">
+                    <figcaption>Epoch 20</figcaption>
+                </figure>
+            </div>
+
+            <h3>2.4 Adding Class-Conditioning to UNet</h3>
+            <p>
+                To control which digit was generated, I extended the UNet with class conditioning. 
+                This involved adding one-hot encoded class vectors (0-9) into the network, with dropout 
+                for occasional unconditional generation.
+            </p>
+            <h2>Class-conditioned UNet training loss curve</h2>
+            <img src="results_proj_5/b_2.4_training_curve.png" alt="Training Curve">
+
+            <h3>2.5 Sampling from the Class-Conditioned UNet</h3>
+            <p>
+                The class-conditioned UNet generated specific digits with improved accuracy using classifier-free guidance.
+            </p>
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/b_2.5_sample_epoch5.png" alt="Epoch 5">
+                    <figcaption>Epoch 5</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/b_2.5_sample_epoch20.png" alt="Epoch 20">
+                    <figcaption>Epoch 20</figcaption>
+                </figure>
+            </div>
         </section>
     </main>
 </body>
