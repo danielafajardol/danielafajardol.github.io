@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun With Diffusion Models!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        h1, h2, h3 {
+            color: #444;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        .images-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fun With Diffusion Models!</h1>
+        <p>By: Daniela Fajardo</p>
+    </header>
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <p>In this project, I implemented and deployed diffusion models for image generation.</p>
+        </section>
+        <section>
+            <h2>Part A: Diffusion Models Exploration</h2>
+            <h3>Overview</h3>
+            <p>In part A, I explored diffusion models, implemented sampling loops, and applied them for tasks such as inpainting and creating optical illusions.</p>
+
+            <h3>Part 0: Image Generation with DeepFloyd IF</h3>
+            <p>My seed is <strong>3037150359</strong>.</p>
+            <p>Using the DeepFloyd IF diffusion model, I generated images with varied inference steps. Below are the results:</p>
+            
+            <div class="images-row">
+                <figure>
+                    <img src="results_proj_5/num_inferences_5.png" alt="Inference Steps 5">
+                    <figcaption>Inference Steps 5</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/num_inferences_10.png" alt="Inference Steps 10">
+                    <figcaption>Inference Steps 10</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/num_inferences_20.png" alt="Inference Steps 20">
+                    <figcaption>Inference Steps 20</figcaption>
+                </figure>
+                <figure>
+                    <img src="results_proj_5/num_inferences_40.png" alt="Inference Steps 40">
+                    <figcaption>Inference Steps 40</figcaption>
+                </figure>
+            </div>
+
+            <h3>1.1 Forward Process</h3>
+            <p>I visualized noisy images at different timesteps (t=250, 500, 750), showing the gradual transformation of a clean image into noise:</p>
+            <img src="image_placeholder" alt="Forward Process Visualization">
+
+            <h3>1.2 Classical Denoising</h3>
+            <p>Gaussian blur was applied to noisy images:</p>
+            <img src="image_placeholder" alt="Gaussian Blur Results">
+
+            <h3>1.3 One-Step Denoising</h3>
+            <p>I used a pretrained UNet to estimate noise and reconstruct images:</p>
+            <img src="image_placeholder" alt="One-Step Denoising Results">
+            <img src="image_placeholder" alt="One-Step Denoising Results">
+            <img src="image_placeholder" alt="One-Step Denoising Results">
+
+            <h3>1.4 Iterative Denoising</h3>
+            <p>Images were refined iteratively using a denoising schedule:</p>
+            <img src="image_placeholder" alt="Iterative Denoising Results">
+
+            <h3>1.5 Diffusion Model Sampling</h3>
+            <p>Images generated from random noise using iterative denoising:</p>
+            <img src="image_placeholder" alt="Generated Images">
+
+            <h3>1.6 Classifier-Free Guidance</h3>
+            <p>Images with enhanced quality using CFG:</p>
+            <img src="image_placeholder" alt="Classifier-Free Guidance Results">
+
+            <h3>1.7 Image-to-Image Translation</h3>
+            <p>Progressive refinement of noisy images:</p>
+            <img src="image_placeholder" alt="Image-to-Image Translation Results">
+        </section>
+
+        <section>
+            <h2>Part B: Training Diffusion Models from Scratch</h2>
+            <h3>Overview</h3>
+            <p>In part B, I trained my own diffusion model on the MNIST dataset.</p>
+
+            <h3>1.1 Implementing the UNet</h3>
+            <p>The UNet architecture was implemented for image denoising:</p>
+            <img src="image_placeholder" alt="UNet Architecture Visualization">
+
+            <h3>1.2 Training a Single-Step Denoiser</h3>
+            <p>Training results over 5 epochs:</p>
+            <p>Training Loss Curve:</p>
+            <img src="image_placeholder" alt="Training Loss Curve">
+            <p>Results after 5 epochs:</p>
+            <img src="image_placeholder" alt="Denoised Images">
+
+            <h3>2.2 Training a Time-Conditioned Diffusion Model</h3>
+            <p>Time-conditioned UNet trained over 20 epochs:</p>
+            <img src="image_placeholder" alt="Time-Conditioned UNet Loss Curve">
+            <p>Generated samples:</p>
+            <img src="image_placeholder" alt="Generated Samples">
+
+            <h3>2.4 Adding Class Conditioning</h3>
+            <p>Class-conditioned UNet results with guided image generation:</p>
+            <img src="image_placeholder" alt="Class-Conditioned Results">
+        </section>
+    </main>
+</body>
+</html>
