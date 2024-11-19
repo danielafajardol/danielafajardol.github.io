@@ -164,7 +164,7 @@
                 applying the denoising process iteratively, I was able to sample images corresponding 
                 to the prompt "a high quality photo."
             </p>
-            <img src="results_proj_5/1.5.im.png" alt="Generated Images">
+            <img src="results_proj_5/1.5.im.png" alt="Generated Images" max_height=75%>
 
             <h3>1.6 Classifier-Free Guidance</h3>
             <p>In this step, I implemented Classifier-Free Guidance (CFG) to significantly 
@@ -175,7 +175,7 @@
                 The images generated from scratch with the prompt "a high quality photo" and 
                 CFG showed much higher quality compared to the previous section.
                 </p>
-            <img src="results_proj_5/1.6.im.png" alt="Classifier-Free Guidance Results">
+            <img src="results_proj_5/1.6.im.png" alt="Classifier-Free Guidance Results" max_height=75%>
 
             <h3>1.7 Image-to-Image Translation</h3>
             <p>
@@ -309,12 +309,12 @@
             <p>
                 In this step, I extended the inpainting process by incorporating text prompts, enabling more controlled edits.
             </p>
+            <h2>"a rocket ship"</h2>
             <img src="results_proj_5/1.7.3.im1.png" alt="Rocket">
-            <figcaption>"a rocket ship"</figcaption>
-            <img src="results_proj_5/1.7.3.im3.png" alt="Rocket">
-            <figcaption>"a pencil"</figcaption>
-            <img src="results_proj_5/1.7.3.im2.png" alt="Hat">
-            <figcaption>"a man wearing a hat"</figcaption>
+            <h2>"a man wearing a hat"</h2>
+            <img src="results_proj_5/1.7.3.im3.png" alt="Hat">
+            <h2>"a pencil"</h2>
+            <img src="results_proj_5/1.7.3.im2.png" alt="Pencil">
         
             <h3>1.8 Visual Anagrams</h3>
             <p>
@@ -402,7 +402,7 @@
                 I trained a UNet model to denoise images by mapping noisy inputs to clean versions using the MNIST dataset. 
                 The model was trained for 5 epochs. I used the Adam optimizer, a hidden dimension of 128 and batch size of 256.
             </p>
-            <h2>Training Loss Curve</h2>
+            <h4>Training Loss Curve</h2>
             <img src="results_proj_5/b_1.2_training_curve.png" alt="Training Loss Curve">
             <div class="images-row">
                 <figure>
@@ -442,7 +442,7 @@
                 I used the Adam optimizer and exponential learning rate decay, batch size of 128, and a hidden 
                 dimension of 64. I trained the model over 20 epochs.
             </p>
-            <h2>Time-Conditioned UNet training loss curve</h2>
+            <h4>Time-Conditioned UNet training loss curve</h2>
             <img src="results_proj_5/b_2.2_training_curve.png" alt="Training Curve">
 
             <h3>2.3 Sampling from the UNet</h3>
@@ -466,7 +466,7 @@
                 This involved adding one-hot encoded class vectors (0-9) into the network, with dropout 
                 for occasional unconditional generation.
             </p>
-            <h2>Class-conditioned UNet training loss curve</h2>
+            <h4>Class-conditioned UNet training loss curve</h2>
             <img src="results_proj_5/b_2.4_training_curve.png" alt="Training Curve">
 
             <h3>2.5 Sampling from the Class-Conditioned UNet</h3>
