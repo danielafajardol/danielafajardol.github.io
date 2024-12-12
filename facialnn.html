@@ -109,7 +109,7 @@
     <pre> 
         We used MSELoss as the loss function.
         The optimizer was Adam with a learning rate of 1e-3.
-        The training loop was run for 75.
+        The training loop was run for 75 epochs.
 
     </pre>
 
@@ -147,7 +147,8 @@
         instead of 20 hidden dimensions for initial convolution, 
         we used 12 and maintained the same ratios between channel size in layers. 
         Here is the training and validation loss. They look very volatile. 
-        The performance was better and more continuous through images with 20 hidden dimensions.
+        The performance on image keypoint matching was better and more continuous 
+        through images with 20 hidden dimensions.
         </p>
         <img src="finalproj/facialnn/im8.png" alt="Im8">
 
@@ -246,10 +247,8 @@
     <h3>CNN</h3>
     <pre>
         For this part, we utilized the ResNet18 model from PyTorch with slight modifications:
-        Input Layer Modification:
-        Changed the first convolutional layer input channel to 1 for grayscale images.
-        Output Layer Modification:
-        Adjusted the final fully connected layer to output 136 nodes (68 x 2 coordinates for keypoints).
+        Input Layer Modification: Changed the first convolutional layer input channel to 1 for grayscale images.
+        Output Layer Modification: Adjusted the final fully connected layer to output 136 nodes (68 x 2 coordinates for keypoints).
     </pre>
 
     <h3>Loss and Optimizer </h3>
@@ -279,7 +278,7 @@
         Success:
     </h4>
     <p>
-        We think it worked well in this case because of the lighting and the angle of the face. The face is more clearly in the picture.
+        We think it worked well in this case because of the lighting and the angle of the face which makes the face clearly depicted in the picture.
     </p>
     <img src="finalproj/facialnn/im29.png" alt="">
 
