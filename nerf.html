@@ -46,13 +46,13 @@
             </p>
         <h2>Part 1</h2>
         <h3>Architecture</h3>
-        <p>WWe followed this architecture, which includes positional encoding, and linear layers followed by ReLU activation functions, and a sigmoid function at the very end. </p>
+        <p>We followed this architecture, which includes positional encoding, and linear layers followed by ReLU activation functions, and a sigmoid function at the very end. </p>
         <div class="image-container">
             <img src="finalproj/nerf/im1.png" alt="">
         </div>
 
         <p>
-            The positional encoding expands the input dimensions by creating more channels with sinusoidal functions. L defines the maximum frequency in the sinusoidal functions. For example, a 2D coordinate in this case with L = 10, becomes dimensions + 2 (for sin and cos) * L * dimensions = 2 + 2 * 10 * 2 = 42. Here is the PE function: 
+            The positional encoding expands the input dimensions by creating more channels with sinusoidal functions. L defines the maximum frequency in the sinusoidal functions. For example, a 2D coordinate in this case with L = 10, becomes dimensions + 2 (for sin and cos) * L * dimensions = 2 + 2 * 10 * 2 = 42. 
         </p>
         <p>Here is the PE function:</p>
         <div class="image-container">
@@ -66,7 +66,7 @@
         </div>
         <h4>Original fox image</h4>
         <div class="image-container">
-            <img src="finalproj/nerf/im4.png" alt="">
+            <img src="finalproj/nerf/im4.jpg" alt="">
         </div>
 
         <h3>PSNR Curves</h3>
@@ -198,16 +198,11 @@
             <img src="finalproj/nerf/im26.png" alt="1000">
             <img src="finalproj/nerf/im27.png" alt="1500">
             <img src="finalproj/nerf/im28.png" alt="2000">
-        </div>
-        <div class="mosaic">
             <img src="finalproj/nerf/im29.png" alt="2500">
             <img src="finalproj/nerf/im30.png" alt="3000">
             <img src="finalproj/nerf/im31.png" alt="3500">
             <img src="finalproj/nerf/im32.png" alt="4000">
             <img src="finalproj/nerf/im33.png" alt="4500">
-        </div>
-
-        <div class="image-container">
             <img src="finalproj/nerf/im34.png" alt="4999">
         </div>
 
