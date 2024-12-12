@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Keypoint Detection with Neural Networks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        .image-placeholder {
+            background-color: #ddd;
+            width: 100%;
+            height: 200px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            border: 1px solid #ccc;
+        }
+        .mosaic {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        .mosaic img {
+            width: calc(50% - 10px);
+            height: auto;
+        }
+        .image-single {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Facial Keypoint Detection with Neural Networks!</h1>
+</header>
+
+<section>
+    <h2>Overview</h2>
+    <p>We learned how to use neural networks to automatically detect facial keypoints.</p>
+</section>
+
+<section>
+    <h2>Part 1: Nose Tip Detection</h2>
+    <h3>Overview</h3>
+    <p>In the first part of the project, we trained an initial toy model for nose tip detection using the IMM Face Database. The dataset contains 240 facial images from 40 individuals, with six images per person taken from different viewpoints. Each image is annotated with 58 facial keypoints. The training set consists of 192 images from 32 individuals (indices 1-32), while the validation set includes 48 images from 8 individuals (indices 33-40).
+        The nose detection problem is formulated as a pixel coordinate regression problem, where the outputs are the nose tip positions (x, y) represented as ratios of the image width and height (range: 0 to 1).
+        </p>
+
+    <h3>Dataloader</h3>
+    <p>
+        For the dataloader we: Created transforms in order to resize images to 80x60, normalize pixel 
+        values to -0.5 to 0.5 and convert data to tensors.
+        Here we can see a few sample images of the training set with their ground truth keypoint.
+    </p>
+    <div class="image-placeholder">Image Placeholder</div>
+
+    <h3>CNN</h3>
+    <p>After experimenting, we ended up implementing this one:</p>
+    <pre>
+        Layer 1:
+        Conv2d(in_channels = 1, outchannels = 20, kernel_size = 3, stride = 2, padding = 0)
+        ReLU()
+
+        Layer 2:
+        Conv2d(in_channels=20, out_channels=20, kernel_size=3, stride=2, padding=0)
+        ReLU()
+        MaxPool2d(kernel_size=2, stride=2)
+
+        Layer 3:
+        Conv2d(in_channels=20, out_channels=40, kernel_size=3, stride=1, padding=0)
+        ReLU()
+
+        Layer 4:
+        Conv2d(in_channels=40, out_channels=40, kernel_size=3, stride=1, padding=0)
+        ReLU()
+        MaxPool2d(kernel_size=2, stride=2)
+
+        Fully Connected Layer:
+        Linear(80, 40)
+        Dropout(0.5)
+        Linear(40, 2)
+
+    </pre>
+
+    <h3>Loss and Optimizer </h3>
+    <pre> 
+        We used MSELoss as the loss function.
+        The optimizer was Adam with a learning rate of 1e-3.
+        The training loop was run for 75.
+
+    </pre>
+
+    <h3>Results</h3>
+    <p>Here are our training and validation losses for our model using num_hidden=20 and learning rate of 1e-3</p>
+    <div class="image-placeholder">Image Placeholder</div>
+
+    <h4>Here are two images where it worked correctly</h4>
+    <div class="mosaic">
+        <div class="image-placeholder">Correct Prediction</div>
+        <div class="image-placeholder">Correct Prediction</div>
+    </div>
+
+    <h4>Here are two images where it failed:</h4>
+    <div class="mosaic">
+        <div class="image-placeholder">Failed Prediction</div>
+        <div class="image-placeholder">Failed Prediction</div>
+    </div>
+    <p>
+        We think it fails in these cases because the faces are not completely centered and the facial 
+        expression of the person is very noticeable which creates more edges and makes it harder for 
+        the model to predict the nose.
+    </p>
+    <h3>Hyperparameter Tuning</h3>
+    <p>
+        We experimented with varying the learning rate to 1e-4: 
+        here is the training and validation loss. 
+        As we can see the losses seem more volatile. 
+        Training loss looks higher while validation looks similar to before. 
+    </p>
+        <div class="image-placeholder">Image Placeholder</div>
+    
+        <p>
+        We experimented with varying the channel size: 
+        instead of 20 hidden dimensions for initial convolution, 
+        we used 12 and maintained the same ratios between channel size in layers. 
+        Here is the training and validation loss. They look very volatile. 
+        The performance was better and more continuous through images with 20 hidden dimensions.
+        </p>
+        <div class="image-placeholder">Image Placeholder</div>
+
+</section>
+
+<section>
+    <h2>Part 2: Full Facial Keypoints Detection</h2>
+    <h3>Overview</h3>
+    <p>In the second part of the project, we expanded the task from detecting the nose tip to predicting all 
+        58 facial keypoints/landmarks. Using the IMM Face Database, we utilized the same dataset as 
+        Part 1 but adjusted our dataloader and model to accommodate all keypoints.</p>
+    
+    <h3>Dataloader</h3>
+    <p>
+        For the dataloader we:
+        Resized images to 160x120.
+        Normalized pixel values to the range -0.5 to 0.5 and converted data to tensors.
+        Applied data augmentation: translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)},rotate=(-22, 22),shear=(-0.08, 0.08)
+        Here we can see a few sample images of the augmented training set with their ground truth keypoints.
+    </p>
+    <div class="image-placeholder">Image Placeholder</div>
+
+    <h3>CNN</h3>
+    <p>
+        After experimenting with various architectures, this is our final one:
+    </p>
+    <div class="image-placeholder">Image Placeholder</div>
+
+    <h3>Loss and Optimizer </h3>
+    <pre> 
+        Loss function: MSELoss.
+        Optimizer: Adam with a learning rate of 1e-3.
+        Training loop: Run for 75 epochs.
+    </pre>
+
+    <h3>Results</h3>
+    <p>Here are our training and validation losses for the model:</p>
+    <div class="image-placeholder">Image Placeholder</div>
+
+    <h4>Here are two images where the model predicted the key points correctly:</h4>
+    <div class="mosaic">
+        <div class="image-placeholder">Correct Prediction</div>
+        <div class="image-placeholder">Correct Prediction</div>
+    </div>
+
+    <h4>Here are two images where the model failed to predict keypoints accurately:</h4>
+    <p>
+        We think they failed in these cases because for example the facial expression on the right is very different 
+        to others which it was trained on which are mostly serious or smiling (not yawning). For the image on the 
+        left we think it failed because it is in the middle of moving the head completely to the side and center, 
+        so the model gets confused on what is trying to predict.
+    </p>
+    <div class="mosaic">
+        <div class="image-placeholder">Failed Prediction</div>
+        <div class="image-placeholder">Failed Prediction</div>
+    </div>
+
+    <h3>Learned Filters</h3>
+    <p> 
+        Here are the learned filters of the model:
+    </p>
+    <div class="image-placeholder">Filter 1</div>
+    <div class="image-placeholder">Filter 2</div>
+    <div class="image-placeholder">Filter 3</div>
+    <div class="image-placeholder">Filter 4</div>
+    <div class="image-placeholder">Filter 5</div>
+    <div class="image-placeholder">Filter 6</div>
+
+</section>
+
+<section>
+    <h2>Part 3: Train With Larger Dataset</h2>
+    <h3>Overview</h3>
+    <p>In this part, we used the ibug face dataset containing 6666 images with 68 annotated facial keypoints per image.</p>
+
+    <h3>Dataloader</h3>
+    <p>
+        We divided the dataset given into an 80-20 split (80% for training and 20% for validation). 
+        In order to process the data we first used the bounding boxes to crop the faces from the images. 
+        Then we resized the cropped faces to 224x224 and adjusted the keypoints to align with the cropped 
+        and resized images. We applied the same transformations from previous parts, but we did not augment 
+        the validation set. 
+
+        Here are some images showing the training set and validation set with the ground truth points 
+
+    </p>
+    <h4> Training Set</h4>
+    <div class="image-placeholder">Image Placeholder</div>
+    <h4> Validation Set</h4>
+    <div class="image-placeholder">Image Placeholder</div>
+
+    <h3>CNN</h3>
+    <pre>
+        For this part, we utilized the ResNet18 model from PyTorch with slight modifications:
+        Input Layer Modification:
+        Changed the first convolutional layer input channel to 1 for grayscale images.
+        Output Layer Modification:
+        Adjusted the final fully connected layer to output 136 nodes (68 x 2 coordinates for keypoints).
+    </pre>
+
+    <h3>Loss and Optimizer </h3>
+    <pre> 
+        Loss function: MSELoss.
+        Optimizer: Adam with a learning rate of 1e-3.
+        Training loop: Run for 75 epochs.
+    </pre>
+
+    <h3>Results</h3>
+    <h4>Training and validation losses:</h4>
+    <div class="image-placeholder">Image Placeholder</div>
+
+    <h4>
+        Keypoint Predictions on Testing Set
+    </h4>
+    <div class="mosaic">
+        <div class="image-placeholder">Keypoint Predictions</div>
+        <div class="image-placeholder">Keypoint Predictions</div>
+        <div class="image-placeholder">Keypoint Predictions</div>
+        <div class="image-placeholder">Keypoint Predictions</div>
+    </div>
+
+    <h3>Real-World Testing</h3>
+   
+    <h4>
+        Success:
+    </h4>
+    <p>
+        We think it worked well in this case because of the lighting and the angle of the face. The face is more clearly in the picture.
+    </p>
+    <div class="image-placeholder">Keypoint Predictions</div>
+
+    <h4> Failure</h4>
+    <p>
+        We think it didn’t work as well in these cases because of the angles at which the pictures were taken. For the first 
+        picture the lighting is not as good and the face is very tilted as well as the glasses interfere. For the second
+         picture, it was taken from a top angle. Additionally, the face shape and ratios of the people in the training
+          set could potentially be different to these people in the pictures that failed.
+    </p>
+        <div class="image-placeholder">Keypoint Predictions</div>
+        <div class="image-placeholder">Keypoint Predictions</div>
+    </div>
+</section>
+
+<section>
+    <h2>Part 4: Pixelwise Classification</h2>
+    <h3>Overview</h3>
+    <p>
+        This part focuses on transforming the regression problem of keypoint detection into a pixelwise classification 
+        problem by predicting the likelihood of each pixel being a keypoint. This approach leverages heatmaps 
+        generated from 2D Gaussian distributions at ground truth keypoint locations. The model outputs pixel-aligned heatmaps, 
+        which are converted back to keypoint coordinates during post-processing.
+    </p>
+
+    <h3>Heatmap Generation</h3>
+   
+    <h4>
+        Distribution Used:
+    </h4>
+    <p>
+        Generated heatmaps using 2D Gaussian distributions centered at the ground truth keypoint coordinates.
+    </p>
+    <h4>
+       Parameters:
+    </h4>
+    <p>
+        Standard Deviation: 5.0.
+    </p>
+    
+    <h4> Sample Visualizations</h4>
+    <div class="mosaic">
+        <div class="image-placeholder">Keypoint Predictions</div>
+        <div class="image-placeholder">Keypoint Predictions</div>
+        
+    </div>
+
+    <h3>CNN</h3>
+    <pre>
+        We chose U-Net and made some changes. We changed the Unet so it would accept 1 input channel 
+        (greyscale images) instead of 3. Additionally we changed the final convolutional layer to 
+        output 68 channels, corresponding to one heatmap for each facial keypoint.
+
+    </pre>
+
+    <h3>Loss and Optimizer </h3>
+    <pre> 
+        Loss function: Cross Entropy Loss.
+        Optimizer: Adam with learning rate 5e-4.
+        Training loop: Run for 10 epochs.
+    </pre>
+
+    <h3> Heatmaps back to points</h3>
+    <p>
+        To convert heatmaps back to keypoints, we identified the pixel with the highest intensity 
+        (indicating the keypoint location) in each heatmap. This is achieved by flattening the heatmaps, 
+        finding the maximum activation index, and translating it into (x, y) spatial coordinates. 
+        This gives the most likely keypoint position for each landmark.
+    </p>
+
+    <h3>Results</h3>
+    <h4>Training and validation losses:</h4>
+    <div class="image-placeholder">Image Placeholder</div>
+
+    <h4>
+        Keypoint Predictions on Testing Set
+    </h4>
+    <div class="mosaic">
+        <div class="image-placeholder">Keypoint Predictions</div>
+        <div class="image-placeholder">Keypoint Predictions</div>
+    </div>
+
+    <h3>Real-World Testing</h3>
+   
+    <h4>
+        Success:
+    </h4>
+    <div class="mosaic">
+        <div class="image-placeholder">Keypoint Predictions</div>
+        <div class="image-placeholder">Keypoint Predictions</div>
+    </div>
+
+    <h4> Failure</h4>
+    <p>
+        We think it failed because the position of the face makes it hard to understand where the features are.
+    </p>
+        <div class="image-placeholder">Keypoint Predictions</div>
+    </div>
+
+    <h3>Heatmap Examples</h3>
+    <div class="mosaic">
+        <div class="image-placeholder">Heatmap 1</div>
+        <div class="image-placeholder">Heatmap 2</div>
+    </div>
+
+    <h3>Binary vs Gaussian Heatmaps</h3>
+    <div class="mosaic">
+        <div class="image-placeholder">Binary</div>
+        <div class="image-placeholder">Gaussian</div>
+        <div class="image-placeholder">Binary</div>
+        <div class="image-placeholder">Gaussian</div>
+    </div>
+</section>
+
+<section>
+    <h2>
+        Bells and Whistles: Binary Heatmaps
+    </h2>
+    <h3>
+        Overview
+    </h3>
+    <p>
+        For Bells and Whistles we  used 1 and 0 mask heatmaps for the landmarks instead of gaussian. 
+        Here is the training and validation of cross entropy loss. Although both models work well, 
+        this model seems to work better than the gaussian heat map approach. Both the validation 
+        and training loss are better and the key points appear more accurate.
+    </p>
+
+    <div class="image-placeholder">Gaussian</div>
+    <h3>
+        Binary VS Gaussian Heatmaps (left binary, right gaussian)
+    </h3>
+    <div class="mosaic">
+        <div class="image-placeholder">Binary</div>
+        <div class="image-placeholder">Gaussian</div>
+    </div>
+    <div class="mosaic">
+        <div class="image-placeholder">Binary</div>
+        <div class="image-placeholder">Gaussian</div>
+    </div>
+    <div class="mosaic">
+        <div class="image-placeholder">Binary</div>
+        <div class="image-placeholder">Gaussian</div>
+    </div>
+
+    <h4>
+        Extra Bells and Whistles: Theoretical explanation. Why is binary better?
+    </h4>
+    <p>
+        We think binary heatmaps could be better for predicting facial keypoints because they provide a more precise
+         signal by marking the exact keypoint location, forcing the model to focus on that specific pixel. 
+         In contrast, Gaussian heatmaps spread the keypoint's impact across nearby pixels, which can weaken
+          the model’s ability to pinpoint the exact location, especially when keypoints are close together.
+    </p>
+</section>
+
+</body>
+</html>
