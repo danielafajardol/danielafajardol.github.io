@@ -2,7 +2,7 @@
    circle motif returns, balancing the hero. */
 function Contact() {
   const DS = window.DanielaFajardoDesignSystem_305341;
-  const { Eyebrow, Button, WavyFrame, SectionDivider } = DS;
+  const { Eyebrow, Button, SectionDivider } = DS;
   return (
     <section id="contact" style={{ marginTop: 'var(--space-section)', position: 'relative', overflow: 'clip' }}>
       <div aria-hidden style={{
@@ -12,38 +12,21 @@ function Contact() {
       }} />
 
       <div style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: '0 var(--page-gutter)', position: 'relative', zIndex: 2 }}>
-        <div style={{
-          display: 'grid', gridTemplateColumns: 'minmax(0,1.5fr) minmax(0,1fr)',
-          gap: 'clamp(28px, 6vw, 90px)', alignItems: 'center',
-        }} className="df-contact-grid">
-          <div>
-            <Eyebrow index="04">Contact</Eyebrow>
-            <h2 style={{ fontSize: 'var(--text-hero)', fontWeight: 900, margin: 'var(--space-5) 0 var(--space-6)', maxWidth: '12ch' }}>
-              Give me something to <span style={{ fontStyle: 'italic', fontWeight: 500, color: 'var(--orange)' }}>care</span> about.
-            </h2>
-            <p style={{ maxWidth: '42ch', fontSize: 'var(--text-subhead)', color: 'var(--text-secondary)', margin: '0 0 var(--space-6)' }}>
-              Collaborations, talks, or a hard problem with a human at the center of it —
-              I'd like to hear about it.
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', alignItems: 'center' }}>
-              <Button variant="accent" size="lg" href="mailto:daniela.fajardo@berkeley.edu">daniela.fajardo@berkeley.edu</Button>
-              <Button variant="link" href="https://www.linkedin.com/in/daniela-fajardo-londono/" target="_blank" rel="noopener">LinkedIn ↗</Button>
-              <Button variant="link" href="https://heelsoff.substack.com/" target="_blank" rel="noopener">Substack ↗</Button>
-              <Button variant="link" href="https://x.com/danfajardolm" target="_blank" rel="noopener">X ↗</Button>
-              <Button variant="link" href="https://github.com/danielafajardol" target="_blank" rel="noopener">GitHub ↗</Button>
-            </div>
-          </div>
-          <div style={{ justifySelf: 'center' }}>
-            <WavyFrame tone="var(--pink-soft)" stroke="var(--pink)" width={230} height={290} rotate={4} caption="fig. 07 — studio">
-              <div style={{padding:'24px 20px',display:'flex',flexDirection:'column',justifyContent:'space-between',height:'100%',boxSizing:'border-box'}}>
-                <span style={{fontFamily:'var(--font-mono)',fontSize:'var(--text-micro)',letterSpacing:'var(--tracking-wide)',textTransform:'uppercase',color:'var(--text-muted)'}}>San Francisco · 2026</span>
-                <div>
-                  <div style={{fontFamily:'var(--font-display)',fontWeight:900,fontSize:'2.2rem',lineHeight:1.05,color:'var(--ink)'}}>Let's <span style={{fontStyle:'italic',color:'var(--orange)'}}>talk.</span></div>
-                  <div style={{fontFamily:'var(--font-mono)',fontSize:'0.65rem',color:'var(--text-muted)',marginTop:'12px',lineHeight:1.6}}>daniela.fajardo<br/>@berkeley.edu</div>
-                </div>
-                <div style={{fontFamily:'var(--font-mono)',fontSize:'var(--text-micro)',letterSpacing:'0.04em',color:'var(--text-muted)'}}>open to collab</div>
-              </div>
-            </WavyFrame>
+        <div>
+          <Eyebrow index="04">Contact</Eyebrow>
+          <h2 style={{ fontSize: 'var(--text-hero)', fontWeight: 900, margin: 'var(--space-5) 0 var(--space-6)', maxWidth: '12ch' }}>
+            Give me something to <span style={{ fontStyle: 'italic', fontWeight: 500, color: 'var(--orange)' }}>care</span> about.
+          </h2>
+          <p style={{ maxWidth: '42ch', fontSize: 'var(--text-subhead)', color: 'var(--text-secondary)', margin: '0 0 var(--space-6)' }}>
+            Collaborations, talks, or a hard problem with a human at the center of it —
+            I'd like to hear about it.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', alignItems: 'center' }}>
+            <Button variant="accent" size="lg" href="mailto:daniela.fajardo@berkeley.edu">daniela.fajardo@berkeley.edu</Button>
+            <Button variant="link" href="https://www.linkedin.com/in/daniela-fajardo-londono/" target="_blank" rel="noopener">LinkedIn ↗</Button>
+            <Button variant="link" href="https://heelsoff.substack.com/" target="_blank" rel="noopener">Substack ↗</Button>
+            <Button variant="link" href="https://x.com/danfajardolm" target="_blank" rel="noopener">X ↗</Button>
+            <Button variant="link" href="https://github.com/danielafajardol" target="_blank" rel="noopener">GitHub ↗</Button>
           </div>
         </div>
 

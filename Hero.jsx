@@ -2,7 +2,7 @@
    couple of breathing frames scattered to the side. */
 function Hero() {
   const DS = window.DanielaFajardoDesignSystem_305341;
-  const { Button, WavyFrame, Tag } = DS;
+  const { Button, Tag } = DS;
   const tags = [
     ['Applied ML', 'purple'],
     ['Human rhythms', 'green'],
@@ -56,24 +56,6 @@ function Hero() {
           {tags.map(([t, tone]) => <Tag key={t} tone={tone} dot>{t}</Tag>)}
         </div>
 
-        <div style={{ display: 'flex', gap: 'clamp(18px, 3vw, 44px)', alignItems: 'flex-end', justifyContent: 'flex-end', marginTop: 'clamp(-30px, -1vw, 0px)', flexWrap: 'wrap' }}>
-          <WavyFrame tone="var(--purple-soft)" stroke="var(--purple)" width={180} height={230} rotate={-5} caption="fig. 01 — first principles">
-            <div style={{padding:'20px 18px',display:'flex',flexDirection:'column',justifyContent:'space-between',height:'100%',boxSizing:'border-box'}}>
-              <span style={{fontFamily:'var(--font-mono)',fontSize:'var(--text-micro)',letterSpacing:'var(--tracking-wide)',textTransform:'uppercase',color:'var(--text-muted)'}}>Applied ML</span>
-              <div>
-                <div style={{fontFamily:'var(--font-display)',fontWeight:900,fontSize:'3.5rem',lineHeight:1,fontStyle:'italic',color:'var(--purple)'}}>01</div>
-                <div style={{fontFamily:'var(--font-body)',fontSize:'var(--text-small)',fontWeight:600,color:'var(--ink)',marginTop:'8px',lineHeight:1.3}}>rhythm<br/>detection</div>
-              </div>
-              <span style={{fontFamily:'var(--font-mono)',fontSize:'var(--text-micro)',letterSpacing:'0.06em',color:'var(--text-muted)'}}>first principles</span>
-            </div>
-          </WavyFrame>
-          <WavyFrame tone="var(--pink-soft)" stroke="var(--pink)" width={140} height={140} rotate={4} caption="fig. 02 — the body">
-            <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',height:'100%',textAlign:'center',padding:'16px',boxSizing:'border-box',gap:'6px'}}>
-              <span style={{fontFamily:'var(--font-display)',fontWeight:500,fontSize:'2.2rem',fontStyle:'italic',color:'var(--pink)',lineHeight:1}}>move</span>
-              <span style={{fontFamily:'var(--font-mono)',fontSize:'var(--text-micro)',letterSpacing:'var(--tracking-wide)',textTransform:'uppercase',color:'var(--text-muted)'}}>with them</span>
-            </div>
-          </WavyFrame>
-        </div>
       </div>
     </header>
   );

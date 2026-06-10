@@ -45,7 +45,7 @@ const PROJECTS = [
 
 function Projects() {
   const DS = window.DanielaFajardoDesignSystem_305341;
-  const { Eyebrow, Card, Tag, WavyFrame, Button, SectionDivider } = DS;
+  const { Eyebrow, Card, Tag, Button, SectionDivider } = DS;
   return (
     <section id="work" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0' }}>
       <SectionDivider label="Selected work" index="§03" />
@@ -59,9 +59,6 @@ function Projects() {
           const color = `var(--${p.c})`;
           const inner = (
             <React.Fragment>
-              <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--space-3) 0 var(--space-6)' }}>
-                <WavyFrame tone={`var(--${p.c}-soft)`} stroke={color} width={p.f.w} height={p.f.h} rotate={p.f.r} speed={0.8} />
-              </div>
               <Eyebrow index={p.n} tick={false} color={p.c === 'yellow' ? 'var(--yellow-ink)' : color}>fig. {p.n}</Eyebrow>
               <h3 style={{ fontSize: 'var(--text-heading)', fontWeight: 700, margin: 'var(--space-3) 0 var(--space-4)' }}>{p.title}</h3>
               <p style={{ color: 'var(--text-secondary)', margin: '0 0 var(--space-5)', fontSize: 'var(--text-small)', lineHeight: 'var(--leading-normal)' }}>{p.body}</p>
