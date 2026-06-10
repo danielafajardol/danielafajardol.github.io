@@ -4,8 +4,8 @@
    Keep this as @import lines only — no rules here.
    ============================================================ */
 
-@import url('./tokens/fonts.css');
-@import url('./tokens/colors.css');
-@import url('./tokens/typography.css');
-@import url('./tokens/spacing.css');
-@import url('./tokens/base.css');
+@import url('./tokens/fonts.css?v=3');
+@import url('./tokens/colors.css?v=3');
+@import url('./tokens/typography.css?v=3');
+@import url('./tokens/spacing.css?v=3');
+@import url('./tokens/base.css?v=3');
