@@ -32,7 +32,7 @@ function Hero() {
           Daniela Fajardo Londoño · San Francisco, CA
         </p>
 
-        <h1 style={{ fontSize: 'clamp(2.7rem, 6.4vw, 6rem)', fontWeight: 900, margin: '0 0 var(--space-6)', maxWidth: '20ch' }}>
+        <h1 style={{ fontSize: 'clamp(2rem, 4.8vw, 4.5rem)', fontWeight: 900, margin: '0 0 var(--space-6)', maxWidth: '20ch' }}>
           <span style={{ fontFamily: 'var(--font-body)', fontWeight: 800, letterSpacing: 'var(--tracking-tight)' }}>Humans are rhythmic systems.</span><br /><br />I build algorithms that{' '}
           <span style={{ fontStyle: 'italic', fontWeight: 500, color: 'var(--green)' }}>listen</span>{' '}
           and products that{' '}
