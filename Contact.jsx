@@ -26,8 +26,10 @@ function Contact() {
               I'd like to hear about it.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', alignItems: 'center' }}>
-              <Button variant="accent" size="lg" href="mailto:danfajardolm@gmail.com">danfajardolm@gmail.com</Button>
-              <Button variant="link" href="https://linkedin.com/in/daniela-fajardo-londono" target="_blank" rel="noopener">LinkedIn ↗</Button>
+              <Button variant="accent" size="lg" href="mailto:daniela.fajardo@berkeley.edu">daniela.fajardo@berkeley.edu</Button>
+              <Button variant="link" href="https://www.linkedin.com/in/daniela-fajardo-londono/" target="_blank" rel="noopener">LinkedIn ↗</Button>
+              <Button variant="link" href="https://heelsoff.substack.com/" target="_blank" rel="noopener">Substack ↗</Button>
+              <Button variant="link" href="https://x.com/danfajardolm" target="_blank" rel="noopener">X ↗</Button>
               <Button variant="link" href="https://github.com/danielafajardol" target="_blank" rel="noopener">GitHub ↗</Button>
             </div>
           </div>
