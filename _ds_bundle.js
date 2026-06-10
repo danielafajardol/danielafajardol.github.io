@@ -98,59 +98,33 @@ Object.assign(__ds_scope, { SectionDivider });
 // components/brand/WavyFrame.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-/* Trace a rectangle perimeter where every point is pushed out/in along its
-   edge normal by A·sin(k·s + phase), s = continuous arc length. The result is
-   a closed path whose four edges undulate like sine waves. */
+if (!document.getElementById('wf-breathe-style')) {
+  const s = document.createElement('style');
+  s.id = 'wf-breathe-style';
+  s.textContent = '@keyframes wf-breathe { 0%,100% { transform: scale(1); } 50% { transform: scale(1.045); } } .wf-breathing { animation: wf-breathe 8s ease-in-out infinite; transform-origin: center; display: inline-block; }';
+  document.head.appendChild(s);
+}
 function wavyRectPath(w, h, inset, A, wavelength, phase) {
-  const x0 = inset,
-    y0 = inset,
-    x1 = w - inset,
-    y1 = h - inset;
+  const x0 = inset, y0 = inset, x1 = w - inset, y1 = h - inset;
   const k = 2 * Math.PI / wavelength;
   const step = 4;
   const pts = [];
   let s = 0;
   const off = () => A * Math.sin(k * s + phase);
-  for (let x = x0; x <= x1; x += step) {
-    pts.push([x, y0 - off()]);
-    s += step;
-  }
-  for (let y = y0; y <= y1; y += step) {
-    pts.push([x1 + off(), y]);
-    s += step;
-  }
-  for (let x = x1; x >= x0; x -= step) {
-    pts.push([x, y1 + off()]);
-    s += step;
-  }
-  for (let y = y1; y >= y0; y -= step) {
-    pts.push([x0 - off(), y]);
-    s += step;
-  }
+  for (let x = x0; x <= x1; x += step) { pts.push([x, y0 - off()]); s += step; }
+  for (let y = y0; y <= y1; y += step) { pts.push([x1 + off(), y]); s += step; }
+  for (let x = x1; x >= x0; x -= step) { pts.push([x, y1 + off()]); s += step; }
+  for (let y = y1; y >= y0; y -= step) { pts.push([x0 - off(), y]); s += step; }
   let d = `M ${pts[0][0].toFixed(2)} ${pts[0][1].toFixed(2)}`;
   for (let i = 1; i < pts.length; i++) d += ` L ${pts[i][0].toFixed(2)} ${pts[i][1].toFixed(2)}`;
   return d + ' Z';
 }
 let __wfSeq = 0;
-
-/* WavyFrame — the brand's signature element. An image (or toned) rectangle
-   whose edges gently undulate like a sine wave and breathe over time. */
 function WavyFrame({
-  src,
-  alt = '',
-  tone = 'var(--blue-soft)',
-  width = 280,
-  height = 360,
-  rotate = 0,
-  stroke = 'var(--ink)',
-  strokeWidth = 1.5,
-  amplitude = 3,
-  wavelength = 48,
-  speed = 1,
-  shadow = true,
-  caption,
-  style = {},
-  ...rest
+  src, alt = '', tone = 'var(--blue-soft)', width = 280, height = 360,
+  rotate = 0, stroke = 'var(--ink)', strokeWidth = 1.5, amplitude = 3,
+  wavelength = 48, speed = 1, shadow = true, breathe = true,
+  caption, children, style = {}, ...rest
 }) {
   const pathRef = React.useRef(null);
   const clipRef = React.useRef(null);
@@ -166,10 +140,7 @@ function WavyFrame({
       if (pathRef.current) pathRef.current.setAttribute('d', d);
       if (clipRef.current) clipRef.current.setAttribute('d', d);
     };
-    if (reduce) {
-      apply(0);
-      return;
-    }
+    if (reduce) { apply(0); return; }
     const start = performance.now();
     const loop = now => {
       const t = (now - start) / 1000;
@@ -179,60 +150,51 @@ function WavyFrame({
     rafRef.current = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(rafRef.current);
   }, [width, height, inset, amplitude, wavelength, speed]);
-  return /*#__PURE__*/React.createElement("figure", _extends({
-    style: {
-      margin: 0,
-      display: 'inline-block',
-      ...style
-    }
-  }, rest), /*#__PURE__*/React.createElement("svg", {
-    width: width,
-    height: height,
-    viewBox: `0 0 ${width} ${height}`,
-    style: {
-      display: 'block',
-      overflow: 'visible',
-      transform: `rotate(${rotate}deg)`,
-      filter: shadow ? 'drop-shadow(0 20px 34px rgba(13,13,13,0.16))' : 'none'
-    }
-  }, /*#__PURE__*/React.createElement("defs", null, /*#__PURE__*/React.createElement("clipPath", {
-    id: clipId
-  }, /*#__PURE__*/React.createElement("path", {
-    ref: clipRef
-  }))), /*#__PURE__*/React.createElement("g", {
-    clipPath: `url(#${clipId})`
-  }, src ? /*#__PURE__*/React.createElement("image", {
-    href: src,
-    x: "0",
-    y: "0",
-    width: width,
-    height: height,
-    preserveAspectRatio: "xMidYMid slice",
-    "aria-label": alt
-  }) : /*#__PURE__*/React.createElement("rect", {
-    x: "0",
-    y: "0",
-    width: width,
-    height: height,
-    fill: tone
-  })), /*#__PURE__*/React.createElement("path", {
-    ref: pathRef,
-    fill: "none",
-    stroke: stroke,
-    strokeWidth: strokeWidth,
-    strokeLinejoin: "round"
-  })), caption && /*#__PURE__*/React.createElement("figcaption", {
-    style: {
-      marginTop: 'var(--space-2)',
-      fontFamily: 'var(--font-mono)',
-      fontSize: 'var(--text-micro)',
-      letterSpacing: 'var(--tracking-wide)',
-      textTransform: 'uppercase',
-      color: 'var(--text-muted)',
-      transform: `rotate(${rotate}deg)`,
-      transformOrigin: 'left top'
-    }
-  }, caption));
+  return React.createElement("figure", _extends({
+    className: breathe ? 'wf-breathing' : undefined,
+    style: { margin: 0, display: 'inline-block', ...style }
+  }, rest),
+    React.createElement("svg", {
+      width: width, height: height, viewBox: `0 0 ${width} ${height}`,
+      style: {
+        display: 'block', overflow: 'visible',
+        transform: `rotate(${rotate}deg)`,
+        filter: shadow ? 'drop-shadow(0 20px 34px rgba(13,13,13,0.16))' : 'none'
+      }
+    },
+      React.createElement("defs", null,
+        React.createElement("clipPath", { id: clipId },
+          React.createElement("path", { ref: clipRef })
+        )
+      ),
+      React.createElement("g", { clipPath: `url(#${clipId})` },
+        children
+          ? React.createElement("foreignObject", { x: 0, y: 0, width: width, height: height },
+              React.createElement("div", {
+                style: { width: '100%', height: '100%', background: tone, overflow: 'hidden', boxSizing: 'border-box' }
+              }, children)
+            )
+          : src
+            ? React.createElement("image", {
+                href: src, x: "0", y: "0", width: width, height: height,
+                preserveAspectRatio: "xMidYMid slice", "aria-label": alt
+              })
+            : React.createElement("rect", { x: "0", y: "0", width: width, height: height, fill: tone })
+      ),
+      React.createElement("path", {
+        ref: pathRef, fill: "none", stroke: stroke,
+        strokeWidth: strokeWidth, strokeLinejoin: "round"
+      })
+    ),
+    caption && React.createElement("figcaption", {
+      style: {
+        marginTop: 'var(--space-2)', fontFamily: 'var(--font-mono)',
+        fontSize: 'var(--text-micro)', letterSpacing: 'var(--tracking-wide)',
+        textTransform: 'uppercase', color: 'var(--text-muted)',
+        transform: `rotate(${rotate}deg)`, transformOrigin: 'left top'
+      }
+    }, caption)
+  );
 }
 Object.assign(__ds_scope, { WavyFrame });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "components/brand/WavyFrame.jsx", error: String((e && e.message) || e) }); }

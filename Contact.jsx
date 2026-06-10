@@ -34,7 +34,16 @@ function Contact() {
             </div>
           </div>
           <div style={{ justifySelf: 'center' }}>
-            <WavyFrame tone="var(--pink-soft)" stroke="var(--pink)" width={230} height={290} rotate={4} caption="fig. 07 — studio" />
+            <WavyFrame tone="var(--pink-soft)" stroke="var(--pink)" width={230} height={290} rotate={4} caption="fig. 07 — studio">
+              <div style={{padding:'24px 20px',display:'flex',flexDirection:'column',justifyContent:'space-between',height:'100%',boxSizing:'border-box'}}>
+                <span style={{fontFamily:'var(--font-mono)',fontSize:'var(--text-micro)',letterSpacing:'var(--tracking-wide)',textTransform:'uppercase',color:'var(--text-muted)'}}>San Francisco · 2026</span>
+                <div>
+                  <div style={{fontFamily:'var(--font-display)',fontWeight:900,fontSize:'2.2rem',lineHeight:1.05,color:'var(--ink)'}}>Let's <span style={{fontStyle:'italic',color:'var(--orange)'}}>talk.</span></div>
+                  <div style={{fontFamily:'var(--font-mono)',fontSize:'0.65rem',color:'var(--text-muted)',marginTop:'12px',lineHeight:1.6}}>daniela.fajardo<br/>@berkeley.edu</div>
+                </div>
+                <div style={{fontFamily:'var(--font-mono)',fontSize:'var(--text-micro)',letterSpacing:'0.04em',color:'var(--text-muted)'}}>open to collab</div>
+              </div>
+            </WavyFrame>
           </div>
         </div>
 
