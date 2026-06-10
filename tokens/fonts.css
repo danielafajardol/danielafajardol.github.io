@@ -1,0 +1,10 @@
+/* ============================================================
+   FONTS — Daniela Fajardo
+   Headlines: Bodoni Moda (high-contrast Didone, Vogue/Didot feel)
+   Body:      Plus Jakarta Sans (clean contemporary grotesque)
+   Loaded from Google Fonts. These are remote @font-face sources;
+   consumers need network access. Swap for local .woff2 if you
+   want them bundled offline.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..700&family=IBM+Plex+Mono:wght@400;500&display=swap');

@@ -1,0 +1,49 @@
+const CARE = [
+  {
+    title: 'Algorithms', color: 'var(--purple)',
+    body: 'I am obsessed with building from first principles. Not using the library — understanding the equation. I trained diffusion models from scratch because I needed to know what a denoising step actually does. I built NeRF from scratch because I wanted to understand how a neural network reconstructs space. The algorithm is where everything starts.',
+  },
+  {
+    title: 'Human systems', color: 'var(--green)',
+    body: 'People are not static. They move in rhythms, cycles, patterns — sleep, temperature, heart rate variability, the way attention shifts across a day. But physiology is only half the picture. Behavior, context, and subjective experience are inputs too. How someone feels does not always match what their body is doing; what someone decides is shaped by things no sensor captures. I am interested in the full picture — all the inputs, objective and subjective — and what it takes to build algorithms that can actually hold that complexity. Almost no software tries. I think that is the most interesting unsolved problem in technology right now.',
+  },
+  {
+    title: "Women's health", color: 'var(--pink)',
+    body: "Women have been an afterthought in medical research, diagnostic tools, and consumer technology for a long time. The data exists. The algorithms exist. Nobody is using them together. That is the gap I am working in.",
+  },
+];
+
+/* Section 1 — What I care about. Three large statements, each in its domain
+   color. The why before the what. */
+function CareAbout() {
+  const DS = window.DanielaFajardoDesignSystem_305341;
+  const { Eyebrow, SectionDivider } = DS;
+  return (
+    <section id="care" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0' }}>
+      <SectionDivider label="The why before the what" index="§01" />
+      <div style={{ margin: 'var(--space-6) 0 var(--space-8)' }}>
+        <Eyebrow index="01">What I care about</Eyebrow>
+      </div>
+
+      <div style={{ display: 'grid', gap: 'var(--space-8)' }}>
+        {CARE.map((c, i) => (
+          <div key={c.title} style={{
+            display: 'grid', gridTemplateColumns: 'minmax(0, 0.85fr) minmax(0, 1.4fr)',
+            gap: 'clamp(24px, 5vw, 80px)', alignItems: 'start',
+            paddingTop: i === 0 ? 0 : 'var(--space-8)',
+            borderTop: i === 0 ? 'none' : '1px solid var(--hairline)',
+          }} className="df-care-row">
+            <h2 style={{ fontSize: 'var(--text-display)', fontWeight: 900, color: c.color, lineHeight: 1.02 }}>
+              {c.title}
+            </h2>
+            <p style={{ fontSize: 'var(--text-subhead)', lineHeight: 'var(--leading-relaxed)', color: 'var(--text-secondary)', maxWidth: '60ch', margin: 0 }}>
+              {c.body}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { DFCareAbout: CareAbout });

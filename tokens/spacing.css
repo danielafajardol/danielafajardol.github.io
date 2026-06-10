@@ -1,0 +1,57 @@
+/* ============================================================
+   SPACING, RADII, MOTION — Daniela Fajardo
+   Spacing follows a calm editorial rhythm. Radii are mostly
+   sharp (paper, photo frames) with a couple of soft tokens for
+   pills/avatars. Motion is the signature: gentle sine-wave
+   "breathing" on frame edges, slow and never bouncy.
+   ============================================================ */
+
+:root {
+  /* --- Spacing scale (8px base) --- */
+  --space-0:   0;
+  --space-1:   0.25rem;  /* 4  */
+  --space-2:   0.5rem;   /* 8  */
+  --space-3:   0.75rem;  /* 12 */
+  --space-4:   1rem;     /* 16 */
+  --space-5:   1.5rem;   /* 24 */
+  --space-6:   2rem;     /* 32 */
+  --space-7:   3rem;     /* 48 */
+  --space-8:   4rem;     /* 64 */
+  --space-9:   6rem;     /* 96 */
+  --space-10:  8rem;     /* 128 */
+  --space-section: clamp(5rem, 12vw, 11rem); /* gap between page sections */
+
+  /* --- Content widths --- */
+  --measure:      66ch;   /* readable prose width */
+  --content-max:  1240px; /* page content cap */
+  --page-gutter:  clamp(1.25rem, 5vw, 5rem); /* @kind spacing */
+
+  /* --- Radii --- */
+  --radius-0:    0;        /* sharp — default for frames & paper */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-pill: 999px;    /* tags, buttons */
+  --radius-full: 50%;      /* avatars, the orange hero circle */
+
+  /* --- Hairline / border weights --- */
+  --line-thin:   1px;
+  --line-medium: 1.5px;
+  --line-thick:  2px;
+
+  /* --- Shadows --- (used very sparingly; this is a paper world) */
+  --shadow-none:  none;
+  --shadow-frame: 0 18px 40px -28px rgba(13, 13, 13, 0.35);
+  --shadow-lift:  0 24px 60px -32px rgba(13, 13, 13, 0.45);
+
+  /* --- Motion --- */
+  --ease-sine:   cubic-bezier(0.37, 0, 0.63, 1);   /* @kind other */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);   /* @kind other */
+  --dur-fast:    160ms; /* @kind other */
+  --dur-base:    280ms; /* @kind other */
+  --dur-slow:    600ms; /* @kind other */
+
+  /* signature "breathing" border cadence */
+  --wave-period:    7s;     /* @kind other */
+  --wave-amplitude: 3px;    /* how far edges wander */
+}
