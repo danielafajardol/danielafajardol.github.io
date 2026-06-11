@@ -1,32 +1,32 @@
 const FACTS = [
   {
     label: 'The long ride',
-    text: 'Biked Highway 1 from San Francisco to San Luis Obispo in one week. Fog, cliffs, sore legs, best decision.',
+    text: 'Biked 5 days off the coast of California from SF to SLO. Too many times I wanted to stop. I stayed, and decided to love it and give it my all instead of walking away from something I chose.',
     color: 'blue', rotate: -1.5,
   },
   {
-    label: 'Asia, no plan',
-    text: 'Backpacked through Asia for two months. Trains, night buses, hostels, bad maps. The best kind of math problem: no closed-form solution.',
+    label: 'No itinerary',
+    text: 'Two months in Asia. No plan, bad maps, wrong turns. Still got everywhere I needed to.',
     color: 'orange', rotate: 1.2,
   },
   {
     label: 'Watercolors',
-    text: 'I paint. Watercolors specifically, the medium that punishes you for being too controlling. Good practice for someone who likes to be in control.',
+    text: "You can't undo a stroke. So you learn to love what you didn't plan for.",
     color: 'pink', rotate: -0.8,
   },
   {
-    label: 'Outdoors',
-    text: 'Hiking whenever I can. Mountains, coasts, trails where there is no signal. The outdoors resets the whole system.',
+    label: 'Without a recipe',
+    text: 'No recipe. I look at what is in the fridge and figure out what we are having. Works every time.',
     color: 'green', rotate: 1.8,
   },
   {
     label: 'Stillness',
-    text: 'Meditation and yoga, the counterweight to everything else. A moving body and a quiet mind are not contradictions.',
+    text: 'Meditation and yoga. For when I am too close to the problem to see it.',
     color: 'purple', rotate: -1.2,
   },
   {
-    label: 'Dark chocolate',
-    text: '70% minimum. Non-negotiable. If you hand me milk chocolate I will be polite about it but I will remember.',
+    label: 'Heels Off',
+    text: 'I write because the more people I reach, the more I can influence.',
     color: 'yellow', rotate: 0.9,
   },
 ];
