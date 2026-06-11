@@ -5,8 +5,8 @@ const FACTS = [
     color: 'blue', rotate: -1.5,
   },
   {
-    label: 'No itinerary',
-    text: 'Two months in Asia. No plan, bad maps, wrong turns. Still got everywhere I needed to.',
+    label: 'Always found a way in',
+    text: 'Two months in Asia without knowing anyone. Walked into rooms with no shared language, no context, no familiar face. Always found a way in.',
     color: 'orange', rotate: 1.2,
   },
   {
@@ -15,7 +15,7 @@ const FACTS = [
     color: 'pink', rotate: -0.8,
   },
   {
-    label: 'Without a recipe',
+    label: 'Cooking without a recipe',
     text: 'No recipe. I look at what is in the fridge and figure out what we are having. Works every time.',
     color: 'green', rotate: 1.8,
   },
@@ -28,6 +28,7 @@ const FACTS = [
     label: 'Heels Off',
     text: 'I write because the more people I reach, the more I can influence.',
     color: 'yellow', rotate: 0.9,
+    link: 'https://heelsoff.substack.com/',
   },
 ];
 
@@ -101,6 +102,14 @@ function About() {
               fontFamily: 'var(--font-body)', fontSize: 'var(--text-small)',
               color: 'var(--ink-soft)', margin: 0, lineHeight: 'var(--leading-normal)',
             }}>{f.text}</p>
+            {f.link && (
+              <a href={f.link} target="_blank" rel="noopener" style={{
+                display: 'inline-block', marginTop: '10px',
+                fontFamily: 'var(--font-mono)', fontSize: 'var(--text-micro)',
+                letterSpacing: '0.06em', color: `var(--${f.color === 'yellow' ? 'yellow-ink' : f.color})`,
+                textDecoration: 'none', borderBottom: `1px solid currentColor`, paddingBottom: '1px',
+              }}>heelsoff.substack.com ↗</a>
+            )}
           </div>
         ))}
       </div>
