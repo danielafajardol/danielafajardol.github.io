@@ -44,8 +44,7 @@ function NowNext() {
       </div>
 
       {/* Section 3 — Coming soon */}
-      <div style={{ marginTop: 'var(--space-9)', display: 'flex', alignItems: 'center', gap: 'var(--space-5)' }}>
-        <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', border: '1.5px solid var(--orange)', flex: '0 0 auto' }} />
+      <div style={{ marginTop: 'var(--space-9)' }}>
         <p style={{ fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 500, fontSize: 'clamp(1.6rem, 3vw, 2.6rem)', color: 'var(--ink)', margin: 0, maxWidth: '24ch' }}>
           More research on algorithms to map human rhythms. Building from there.
         </p>

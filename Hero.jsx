@@ -34,7 +34,7 @@ function SineWave() {
 function Hero() {
   const DS = window.DanielaFajardoDesignSystem_305341;
   const { Button, Tag } = DS;
-  const { DoodleFlower, DoodleStar } = window;
+  const { DoodleFlower, DoodleStar, DoodleSparkle, DoodleTinyFlower } = window;
   const tags = [
     ['Applied ML', 'purple'],
     ['Human rhythms', 'green'],
@@ -52,6 +52,15 @@ function Hero() {
       </div>
       <div aria-hidden style={{ position: 'absolute', bottom: '6%', left: '1%', pointerEvents: 'none' }}>
         <DoodleStar color="var(--purple)" size={38} delay={0.8} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', top: '55%', right: '2%', pointerEvents: 'none' }}>
+        <DoodleSparkle color="var(--orange)" size={28} delay={1.2} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', top: '20%', left: '3%', pointerEvents: 'none' }}>
+        <DoodleTinyFlower color="var(--green)" size={32} delay={1.6} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', bottom: '25%', right: '5%', pointerEvents: 'none' }}>
+        <DoodleStar color="var(--yellow)" size={22} delay={2.0} />
       </div>
 
       <div style={{

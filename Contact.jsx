@@ -1,29 +1,30 @@
-/* Contact — a big sparse invitation, an email, and a footer. The orange
-   circle motif returns, balancing the hero. */
 function Contact() {
   const DS = window.DanielaFajardoDesignSystem_305341;
   const { Eyebrow, Button, SectionDivider } = DS;
-  const { DoodleFlower, DoodleStar } = window;
+  const { DoodleFlower, DoodleStar, DoodleSparkle, DoodleTinyFlower } = window;
   return (
     <section id="contact" style={{ marginTop: 'var(--space-section)', position: 'relative', overflow: 'clip' }}>
-      <div aria-hidden style={{
-        position: 'absolute', left: '-6%', bottom: '-30%',
-        width: 'clamp(300px, 36vw, 560px)', aspectRatio: '1',
-        border: '1.5px solid var(--orange)', borderRadius: '50%', opacity: 0.5, pointerEvents: 'none',
-      }} />
-
       {/* doodles */}
-      <div aria-hidden style={{ position: 'absolute', top: '8%', right: '6%', pointerEvents: 'none', zIndex: 1 }}>
+      <div aria-hidden style={{ position: 'absolute', top: '6%', right: '6%', pointerEvents: 'none', zIndex: 1 }}>
         <DoodleFlower color="var(--pink)" size={56} delay={0.3} />
       </div>
-      <div aria-hidden style={{ position: 'absolute', top: '40%', right: '3%', pointerEvents: 'none', zIndex: 1 }}>
+      <div aria-hidden style={{ position: 'absolute', top: '38%', right: '3%', pointerEvents: 'none', zIndex: 1 }}>
         <DoodleStar color="var(--orange)" size={34} delay={1.0} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', top: '20%', left: '2%', pointerEvents: 'none', zIndex: 1 }}>
+        <DoodleSparkle color="var(--purple)" size={28} delay={0.7} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', bottom: '18%', right: '8%', pointerEvents: 'none', zIndex: 1 }}>
+        <DoodleTinyFlower color="var(--blue)" size={32} delay={1.5} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', bottom: '8%', left: '5%', pointerEvents: 'none', zIndex: 1 }}>
+        <DoodleStar color="var(--green)" size={26} delay={1.2} />
       </div>
 
       <div style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: '0 var(--page-gutter)', position: 'relative', zIndex: 2 }}>
         <div>
-          <Eyebrow index="04">Contact</Eyebrow>
-          <h2 style={{ fontSize: 'var(--text-hero)', fontWeight: 900, margin: 'var(--space-5) 0 var(--space-6)', maxWidth: '12ch' }}>
+          <Eyebrow index="06">Contact</Eyebrow>
+          <h2 style={{ fontSize: 'var(--text-display)', fontWeight: 900, margin: 'var(--space-5) 0 var(--space-6)', maxWidth: '18ch' }}>
             Give me something to <span style={{ fontStyle: 'italic', fontWeight: 500, color: 'var(--orange)' }}>care</span> about.
           </h2>
           <p style={{ maxWidth: '42ch', fontSize: 'var(--text-subhead)', color: 'var(--text-secondary)', margin: '0 0 var(--space-6)' }}>

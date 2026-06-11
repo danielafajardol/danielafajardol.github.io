@@ -16,14 +16,22 @@ const CARE = [
 function CareAbout() {
   const DS = window.DanielaFajardoDesignSystem_305341;
   const { Eyebrow, SectionDivider } = DS;
-  const { DoodleSparkle, DoodleTinyFlower } = window;
+  const { DoodleSparkle, DoodleTinyFlower, DoodleFlower, DoodleStar } = window;
   const doodles = [
     { C: DoodleSparkle, color: 'var(--purple)', size: 30, delay: 0.4 },
     { C: DoodleTinyFlower, color: 'var(--green)', size: 34, delay: 1.1 },
     { C: DoodleSparkle, color: 'var(--pink)', size: 26, delay: 1.7 },
   ];
   return (
-    <section id="care" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0' }}>
+    <section id="care" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0', position: 'relative' }}>
+      {/* extra scattered doodles */}
+      <div aria-hidden style={{ position: 'absolute', top: '2%', right: '1%', pointerEvents: 'none' }}>
+        <DoodleFlower color="var(--purple)" size={42} delay={0.3} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', bottom: '5%', right: '3%', pointerEvents: 'none' }}>
+        <DoodleStar color="var(--green)" size={30} delay={1.4} />
+      </div>
+
       <SectionDivider label="The why before the what" index="§01" />
       <div style={{ margin: 'var(--space-6) 0 var(--space-8)' }}>
         <Eyebrow index="01">What I care about</Eyebrow>
