@@ -22,7 +22,7 @@ function NowNext() {
           <Tag tone="pink" dot>Women's health</Tag>
           <h3 style={{ fontSize: 'var(--text-title)', fontWeight: 700, margin: 'var(--space-4) 0 var(--space-4)' }}>The House of Maria</h3>
           <p style={{ color: 'var(--text-secondary)', margin: '0 0 var(--space-5)', maxWidth: '46ch' }}>
-            The community I'm building around women's health done right — education, products, and a space where
+            The community I'm building around women's health done right: education, products, and a space where
             women's bodies are understood on their own terms, not as a deviation from a male default.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
@@ -36,7 +36,7 @@ function NowNext() {
           <h3 style={{ fontSize: 'var(--text-title)', fontWeight: 700, margin: 'var(--space-4) 0 var(--space-4)' }}>Independent research</h3>
           <p style={{ color: 'var(--text-secondary)', margin: '0 0 var(--space-4)', maxWidth: '46ch' }}>
             I spent months mapping the gap between what wearables measure and what is actually happening in women's
-            bodies — temperature patterns, HRV, and wearable signal behavior across the cycle, specifically in
+            bodies: temperature patterns, HRV, and wearable signal behavior across the cycle, specifically in
             high-demand professional women. The tools say one thing. The body says another. I wanted to understand why.
           </p>
           <Button variant="link" href="https://heelsoff.substack.com" target="_blank" rel="noopener">I write about this at Heels Off ↗</Button>

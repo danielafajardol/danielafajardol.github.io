@@ -1,7 +1,7 @@
 const PROJECTS = [
   {
     n: '01', title: 'Diffusion models from scratch', c: 'purple',
-    body: 'Built the full pipeline from the mathematics: forward noising, a UNet, classifier-free guidance, iterative denoising. Then went further — inpainting, SDEdit-style translation, visual anagrams that flip at 180°, and frequency-separated hybrids. You understand something differently when you build the equation, not the import statement.',
+    body: 'Built the full pipeline from the mathematics: forward noising, a UNet, classifier-free guidance, iterative denoising. Then went further: inpainting, SDEdit-style translation, visual anagrams that flip at 180°, and frequency-separated hybrids. You understand something differently when you build the equation, not the import statement.',
     tags: ['PyTorch', 'UNet', 'Generative AI', 'Diffusion'],
     link: 'https://danielafajardol.github.io/cs180/project5.html',
   },

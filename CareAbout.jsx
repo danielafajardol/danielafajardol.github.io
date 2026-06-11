@@ -1,11 +1,11 @@
 const CARE = [
   {
     title: 'Algorithms', color: 'var(--purple)', rawColor: '#7C3AED',
-    body: 'I am obsessed with building from first principles. Not using the library — understanding the equation. I trained diffusion models from scratch because I needed to know what a denoising step actually does. I built NeRF from scratch because I wanted to understand how a neural network reconstructs space. The algorithm is where everything starts.',
+    body: 'I am obsessed with building from first principles. Not using the library. Understanding the equation. I trained diffusion models from scratch because I needed to know what a denoising step actually does. I built NeRF from scratch because I wanted to understand how a neural network reconstructs space. The algorithm is where everything starts.',
   },
   {
     title: 'Human systems', color: 'var(--green)', rawColor: '#10B981',
-    body: 'People are not static. They move in rhythms, cycles, patterns — sleep, temperature, heart rate variability, the way attention shifts across a day. But physiology is only half the picture. Behavior, context, and subjective experience are inputs too. How someone feels does not always match what their body is doing; what someone decides is shaped by things no sensor captures. I am interested in the full picture — all the inputs, objective and subjective — and what it takes to build algorithms that can actually hold that complexity. Almost no software tries. I think that is the most interesting unsolved problem in technology right now.',
+    body: 'People are not static. They move in rhythms, cycles, patterns: sleep, temperature, heart rate variability, the way attention shifts across a day. But physiology is only half the picture. Behavior, context, and subjective experience are inputs too. How someone feels does not always match what their body is doing; what someone decides is shaped by things no sensor captures. I am interested in the full picture, all the inputs, objective and subjective, and what it takes to build algorithms that can actually hold that complexity. Almost no software tries. I think that is the most interesting unsolved problem in technology right now.',
   },
   {
     title: "Women's health", color: 'var(--pink)', rawColor: '#F72585',

@@ -1,26 +1,26 @@
 const STOPS = [
   {
-    range: 'Sep 2025 — Present', org: 'McKinsey & Company', place: 'San Francisco, CA',
+    range: 'Sep 2025 · Present', org: 'McKinsey & Company', place: 'San Francisco, CA',
     role: 'Business Analyst, AI & Automation', c: 'orange',
     body: 'Built and deployed AI agents converting manual document-processing workflows into automated decision logic, cutting processing time 70%. Evaluated 45+ automation initiatives and built a prioritization framework shaping a roadmap of $50M+ in operational value. Developed an AI benchmarking platform for strategy teams; presents technical roadmaps directly to senior executives.',
   },
   {
-    range: 'May 2024 — Aug 2024', org: 'Addepar', place: 'New York, NY',
+    range: 'May 2024 · Aug 2024', org: 'Addepar', place: 'New York, NY',
     role: 'Research Product Management Intern', c: 'orange',
-    body: 'Analyzed portfolio composition across 85+ investment firms and authored a comparative study of LATAM vs. US allocation patterns. Translated research into a 0-to-1 peer-benchmarking product using nearest-neighbors over portfolio features — from requirements through user testing to a formal company initiative.',
+    body: 'Analyzed portfolio composition across 85+ investment firms and authored a comparative study of LATAM vs. US allocation patterns. Translated research into a 0-to-1 peer-benchmarking product using nearest-neighbors over portfolio features, from requirements through user testing to a formal company initiative.',
   },
   {
-    range: 'Jan 2023 — May 2024', org: 'Berkeley Blockchain Xcelerator', place: 'Fellow',
+    range: 'Jan 2023 · May 2024', org: 'Berkeley Blockchain Xcelerator', place: 'Fellow',
     role: 'Investment Fellow', c: 'purple',
     body: 'Evaluated 40+ Seed and Series A startup investments to select semester cohorts. Curated a portfolio of 15 startups that have collectively raised over $40M since enrollment.',
   },
   {
-    range: 'May 2023 — Aug 2023', org: 'Tesla', place: 'Palo Alto, CA',
-    role: 'Power Distribution — Global Supply Chain Data Analyst', c: 'green',
+    range: 'May 2023 · Aug 2023', org: 'Tesla', place: 'Palo Alto, CA',
+    role: 'Power Distribution, Global Supply Chain Data Analyst', c: 'green',
     body: 'Analyzed component spend across 25+ suppliers and built Tableau models supporting negotiations that reduced low-voltage component costs by 10%. Developed demand-forecasting analysis for cross-functional resource allocation.',
   },
   {
-    range: 'Aug 2021 — May 2025', org: 'UC Berkeley', place: 'B.A. · GPA 3.73',
+    range: 'Aug 2021 · May 2025', org: 'UC Berkeley', place: 'B.A. · GPA 3.73',
     role: 'Computer Science & Applied Mathematics', c: 'blue',
     body: 'Coursework: Machine Learning, Computer Vision, Graduate Combinatorial Algorithms, Numerical Analysis, Linear Algebra, Abstract Algebra, Complex Analysis, Probability, Efficient Algorithms. Awards: AP Scholar with Honors; Top 25%, International Pascal Mathematics Contest.',
   },

@@ -28,7 +28,7 @@ function Contact() {
             Give me something to <span style={{ fontStyle: 'italic', fontWeight: 500, color: 'var(--orange)' }}>care</span> about.
           </h2>
           <p style={{ maxWidth: '42ch', fontSize: 'var(--text-subhead)', color: 'var(--text-secondary)', margin: '0 0 var(--space-6)' }}>
-            Collaborations, talks, or a hard problem with a human at the center of it —
+            Collaborations, talks, or a hard problem with a human at the center of it.
             I'd like to hear about it.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', alignItems: 'center' }}>

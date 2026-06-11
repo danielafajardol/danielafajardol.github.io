@@ -6,12 +6,12 @@ const FACTS = [
   },
   {
     label: 'Asia, no plan',
-    text: 'Backpacked through Asia for two months. Trains, night buses, hostels, bad maps. The best kind of math problem — no closed-form solution.',
+    text: 'Backpacked through Asia for two months. Trains, night buses, hostels, bad maps. The best kind of math problem: no closed-form solution.',
     color: 'orange', rotate: 1.2,
   },
   {
     label: 'Watercolors',
-    text: 'I paint. Watercolors specifically — the medium that punishes you for being too controlling. Good practice for someone who likes to be in control.',
+    text: 'I paint. Watercolors specifically, the medium that punishes you for being too controlling. Good practice for someone who likes to be in control.',
     color: 'pink', rotate: -0.8,
   },
   {
@@ -21,7 +21,7 @@ const FACTS = [
   },
   {
     label: 'Stillness',
-    text: 'Meditation and yoga — the counterweight to everything else. A moving body and a quiet mind are not contradictions.',
+    text: 'Meditation and yoga, the counterweight to everything else. A moving body and a quiet mind are not contradictions.',
     color: 'purple', rotate: -1.2,
   },
   {
