@@ -3,6 +3,7 @@
 function Contact() {
   const DS = window.DanielaFajardoDesignSystem_305341;
   const { Eyebrow, Button, SectionDivider } = DS;
+  const { DoodleFlower, DoodleStar } = window;
   return (
     <section id="contact" style={{ marginTop: 'var(--space-section)', position: 'relative', overflow: 'clip' }}>
       <div aria-hidden style={{
@@ -10,6 +11,14 @@ function Contact() {
         width: 'clamp(300px, 36vw, 560px)', aspectRatio: '1',
         border: '1.5px solid var(--orange)', borderRadius: '50%', opacity: 0.5, pointerEvents: 'none',
       }} />
+
+      {/* doodles */}
+      <div aria-hidden style={{ position: 'absolute', top: '8%', right: '6%', pointerEvents: 'none', zIndex: 1 }}>
+        <DoodleFlower color="var(--pink)" size={56} delay={0.3} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', top: '40%', right: '3%', pointerEvents: 'none', zIndex: 1 }}>
+        <DoodleStar color="var(--orange)" size={34} delay={1.0} />
+      </div>
 
       <div style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: '0 var(--page-gutter)', position: 'relative', zIndex: 2 }}>
         <div>

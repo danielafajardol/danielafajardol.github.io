@@ -1,23 +1,27 @@
 const CARE = [
   {
-    title: 'Algorithms', color: 'var(--purple)',
+    title: 'Algorithms', color: 'var(--purple)', rawColor: '#7C3AED',
     body: 'I am obsessed with building from first principles. Not using the library — understanding the equation. I trained diffusion models from scratch because I needed to know what a denoising step actually does. I built NeRF from scratch because I wanted to understand how a neural network reconstructs space. The algorithm is where everything starts.',
   },
   {
-    title: 'Human systems', color: 'var(--green)',
+    title: 'Human systems', color: 'var(--green)', rawColor: '#10B981',
     body: 'People are not static. They move in rhythms, cycles, patterns — sleep, temperature, heart rate variability, the way attention shifts across a day. But physiology is only half the picture. Behavior, context, and subjective experience are inputs too. How someone feels does not always match what their body is doing; what someone decides is shaped by things no sensor captures. I am interested in the full picture — all the inputs, objective and subjective — and what it takes to build algorithms that can actually hold that complexity. Almost no software tries. I think that is the most interesting unsolved problem in technology right now.',
   },
   {
-    title: "Women's health", color: 'var(--pink)',
+    title: "Women's health", color: 'var(--pink)', rawColor: '#F72585',
     body: "Women have been an afterthought in medical research, diagnostic tools, and consumer technology for a long time. The data exists. The algorithms exist. Nobody is using them together. That is the gap I am working in.",
   },
 ];
 
-/* Section 1 — What I care about. Three large statements, each in its domain
-   color. The why before the what. */
 function CareAbout() {
   const DS = window.DanielaFajardoDesignSystem_305341;
   const { Eyebrow, SectionDivider } = DS;
+  const { DoodleSparkle, DoodleTinyFlower } = window;
+  const doodles = [
+    { C: DoodleSparkle, color: 'var(--purple)', size: 30, delay: 0.4 },
+    { C: DoodleTinyFlower, color: 'var(--green)', size: 34, delay: 1.1 },
+    { C: DoodleSparkle, color: 'var(--pink)', size: 26, delay: 1.7 },
+  ];
   return (
     <section id="care" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0' }}>
       <SectionDivider label="The why before the what" index="§01" />
@@ -32,10 +36,28 @@ function CareAbout() {
             gap: 'clamp(24px, 5vw, 80px)', alignItems: 'start',
             paddingTop: i === 0 ? 0 : 'var(--space-8)',
             borderTop: i === 0 ? 'none' : '1px solid var(--hairline)',
+            position: 'relative',
           }} className="df-care-row">
-            <h2 style={{ fontSize: 'var(--text-display)', fontWeight: 900, color: c.color, lineHeight: 1.02 }}>
-              {c.title}
-            </h2>
+            {/* ghosted large index number */}
+            <div aria-hidden style={{
+              position: 'absolute', left: '-0.04em', top: '-0.25em',
+              fontFamily: 'var(--font-display)', fontWeight: 900,
+              fontSize: 'clamp(5rem, 10vw, 9rem)', lineHeight: 1,
+              color: c.color, opacity: 0.07, userSelect: 'none', pointerEvents: 'none',
+              letterSpacing: '-0.04em',
+            }}>
+              {String(i + 1).padStart(2, '0')}
+            </div>
+
+            <div style={{ position: 'relative' }}>
+              {/* margin doodle */}
+              <div aria-hidden style={{ position: 'absolute', left: '-2.8rem', top: '0.2rem' }}>
+                {React.createElement(doodles[i].C, { color: doodles[i].color, size: doodles[i].size, delay: doodles[i].delay })}
+              </div>
+              <h2 style={{ fontSize: 'var(--text-display)', fontWeight: 900, color: c.color, lineHeight: 1.02 }}>
+                {c.title}
+              </h2>
+            </div>
             <p style={{ fontSize: 'var(--text-subhead)', lineHeight: 'var(--leading-relaxed)', color: 'var(--text-secondary)', maxWidth: '60ch', margin: 0 }}>
               {c.body}
             </p>

@@ -45,7 +45,16 @@ function Timeline() {
             gap: 'var(--space-5)', alignItems: 'start',
             padding: 'var(--space-6) 0', borderBottom: '1px solid var(--hairline)',
           }} className="df-stop">
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', letterSpacing: '0.03em', color: 'var(--ink-soft)', paddingTop: '0.35em' }}>{s.range}</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-caption)', letterSpacing: '0.03em', color: 'var(--ink-soft)', paddingTop: '0.35em', position: 'relative' }}>
+              {s.range}
+              {s.org === 'McKinsey & Company' && (
+                <span aria-hidden style={{
+                  display: 'block', fontFamily: 'var(--font-hand)', fontSize: '1rem',
+                  color: 'var(--orange)', transform: 'rotate(-4deg)', marginTop: '4px',
+                  letterSpacing: 0,
+                }}>← now</span>
+              )}
+            </span>
             <span aria-hidden style={{ justifySelf: 'center', paddingTop: '0.45em' }}>
               <span style={{ display: 'block', width: 11, height: 11, borderRadius: '50%', background: `var(--${s.c})` }} />
             </span>

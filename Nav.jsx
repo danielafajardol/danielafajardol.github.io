@@ -26,11 +26,19 @@ function Nav() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-6)' }}>
         <ul style={{ display: 'flex', gap: 'var(--space-5)', listStyle: 'none', margin: 0, padding: 0 }}>
           {links.map(([label, href]) => (
-            <li key={href}>
+            <li key={href} style={{ position: 'relative' }}>
               <a href={href} style={{
                 fontFamily: 'var(--font-body)', fontSize: 'var(--text-caption)', fontWeight: 600,
                 letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--ink-soft)',
               }}>{label}</a>
+              {label === 'Projects' && (
+                <span aria-hidden style={{
+                  position: 'absolute', top: '-0.9rem', right: '-0.9rem',
+                  fontFamily: 'var(--font-hand)', fontSize: '1rem',
+                  color: 'var(--orange)', transform: 'rotate(12deg)',
+                  lineHeight: 1, pointerEvents: 'none',
+                }}>★</span>
+              )}
             </li>
           ))}
         </ul>
