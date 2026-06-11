@@ -3,8 +3,15 @@
 function NowNext() {
   const DS = window.DanielaFajardoDesignSystem_305341;
   const { Eyebrow, Card, Button, Tag, SectionDivider } = DS;
+  const { DoodleFlower, DoodleSparkle } = window;
   return (
-    <section id="now" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0' }}>
+    <section id="now" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0', position: 'relative' }}>
+      <div aria-hidden style={{ position: 'absolute', top: '0', right: '0', pointerEvents: 'none' }}>
+        <DoodleSparkle color="var(--yellow)" size={28} delay={0.6} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', bottom: '12%', left: '-1%', pointerEvents: 'none' }}>
+        <DoodleFlower color="var(--pink)" size={40} delay={1.4} />
+      </div>
       <SectionDivider label="Currently" index="§02" />
       <div style={{ margin: 'var(--space-6) 0 var(--space-7)' }}>
         <Eyebrow index="02">What I'm doing now</Eyebrow>

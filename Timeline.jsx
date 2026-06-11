@@ -30,8 +30,15 @@ const STOPS = [
 function Timeline() {
   const DS = window.DanielaFajardoDesignSystem_305341;
   const { Eyebrow, Button, SectionDivider } = DS;
+  const { DoodleStar, DoodleSparkle } = window;
   return (
-    <section id="path" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0' }}>
+    <section id="path" style={{ maxWidth: 'var(--content-max)', margin: '0 auto', padding: 'var(--space-section) var(--page-gutter) 0', position: 'relative' }}>
+      <div aria-hidden style={{ position: 'absolute', top: '2%', right: '1%', pointerEvents: 'none' }}>
+        <DoodleStar color="var(--orange)" size={32} delay={0.5} />
+      </div>
+      <div aria-hidden style={{ position: 'absolute', bottom: '5%', right: '3%', pointerEvents: 'none' }}>
+        <DoodleSparkle color="var(--purple)" size={24} delay={1.1} />
+      </div>
       <SectionDivider label="Trajectory" index="§04" />
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--space-5)', flexWrap: 'wrap', margin: 'var(--space-6) 0 var(--space-8)' }}>
         <Eyebrow index="04">Experience</Eyebrow>
