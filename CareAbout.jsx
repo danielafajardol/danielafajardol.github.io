@@ -9,7 +9,7 @@ const CARE = [
   },
   {
     title: "Women's health", color: 'var(--pink)', rawColor: '#F72585',
-    body: "Women have been an afterthought in medical research, diagnostic tools, and consumer technology for a long time. The data exists. The algorithms exist. Nobody is using them together. That is the gap I am working in.",
+    body: "Women have been an afterthought in medical research, diagnostic tools, and consumer technology for a long time. The data exists. The algorithms don't. That is the gap I am working in.",
   },
 ];
 
