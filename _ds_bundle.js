@@ -1432,7 +1432,7 @@ function Timeline() {
       lineHeight: 'var(--leading-normal)',
       maxWidth: '64ch'
     }
-  }, s.body)))));
+  }, s.body))))));
 }
 Object.assign(window, {
   DFTimeline: Timeline
