@@ -1432,16 +1432,7 @@ function Timeline() {
       lineHeight: 'var(--leading-normal)',
       maxWidth: '64ch'
     }
-  }, s.body))))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      marginTop: 'var(--space-7)'
-    }
-  }, /*#__PURE__*/React.createElement(Button, {
-    variant: "outline",
-    href: "#",
-    target: "_blank",
-    rel: "noopener"
-  }, "Download r\xE9sum\xE9")));
+  }, s.body)))));
 }
 Object.assign(window, {
   DFTimeline: Timeline

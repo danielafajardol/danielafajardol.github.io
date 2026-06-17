@@ -76,10 +76,6 @@ function Timeline() {
           </li>
         ))}
       </ol>
-
-      <div style={{ marginTop: 'var(--space-7)' }}>
-        <Button variant="outline" href="#" target="_blank" rel="noopener">Download résumé</Button>
-      </div>
     </section>
   );
 }
