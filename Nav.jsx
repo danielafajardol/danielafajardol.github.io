@@ -42,7 +42,7 @@ function Nav() {
             </li>
           ))}
         </ul>
-        <Button variant="accent" size="sm" href="#contact">Get in touch</Button>
+        <Button variant="accent" size="sm" href="mailto:daniela.fajardo@berkeley.edu">Get in touch</Button>
       </div>
     </nav>
   );
