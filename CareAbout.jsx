@@ -1,15 +1,15 @@
 const CARE = [
   {
     title: 'Algorithms', color: 'var(--purple)', rawColor: '#7C3AED',
-    body: 'I am obsessed with building from first principles. Not using the library. Understanding the equation. I trained diffusion models from scratch because I needed to know what a denoising step actually does. I built NeRF from scratch because I wanted to understand how a neural network reconstructs space. The algorithm is where everything starts.',
+    body: 'It is clear where technology is heading: it is learning to act like us, to write and decide and respond in ways that look human. But the models doing that work are still black boxes to most people building with them. I think that is a problem. I build from first principles — not using the library, understanding the equation. I trained diffusion models from scratch because I needed to know what a denoising step actually does. I built NeRF from scratch because I wanted to understand how a neural network reconstructs space. If the goal is to build algorithms that hold a whole person, you have to understand the math underneath.',
   },
   {
     title: 'Human systems', color: 'var(--green)', rawColor: '#10B981',
-    body: 'People are not static. They move in rhythms, cycles, patterns: sleep, temperature, heart rate variability, the way attention shifts across a day. But physiology is only half the picture. Behavior, context, and subjective experience are inputs too. How someone feels does not always match what their body is doing; what someone decides is shaped by things no sensor captures. I am interested in the full picture, all the inputs, objective and subjective, and what it takes to build algorithms that can actually hold that complexity. Almost no software tries. I think that is the most interesting unsolved problem in technology right now.',
+    body: 'I am passionate about how human behavior intersects with algorithms, and about the parts of a person that data alone never explains. Most software models the body as a clean set of signals, but people are messier than that. We move in rhythms and cycles, but how we feel does not always match what a sensor says, and what we decide is shaped by things no device captures. Designing systems that can carry that full picture — behavior and context and subjective experience alongside the physiology — is the work I most want to do. I think it is the most interesting unsolved problem in technology right now.',
   },
   {
     title: "Women's health", color: 'var(--pink)', rawColor: '#F72585',
-    body: "Women have been an afterthought in medical research, diagnostic tools, and consumer technology for a long time. The data exists. The algorithms don't. That is the gap I am working in.",
+    body: "I focus that work on women's health, because it is where the gap is widest. Women have been an afterthought in medical research, diagnostic tools, and consumer technology for decades. The data exists. The algorithms do not. That is the gap I work in, through The House of Maria, the women's health community I am growing, and independent research on what wearables actually measure across the cycle in women carrying high-demand lives.",
   },
 ];
 
