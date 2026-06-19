@@ -9,7 +9,7 @@ const PROJECTS = [
     n: '02', title: 'Neural radiance fields from scratch', c: 'blue',
     body: '3D scene reconstruction from 2D images. Ray casting, sinusoidal positional encoding, volume rendering, novel view synthesis. Started with a 2D coordinate-to-RGB task, then built the full 3D system and ran ablations on depth, width, and encoding frequency. PSNR 23+ at 5,000 iterations.',
     tags: ['PyTorch', 'NeRF', '3D reconstruction', 'Positional encoding'],
-    link: 'https://danielafajardol.github.io/cs180/finalprojects.html',
+    link: 'https://danielafajardol.github.io/cs180/nerf.html',
   },
   {
     n: '03', title: 'Image geolocation: CLIP + KNN', c: 'green',
