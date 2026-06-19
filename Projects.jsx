@@ -113,7 +113,7 @@ function Projects() {
                 <div style={{ display: 'flex', gap: 'var(--space-2)', flexWrap: 'wrap', marginBottom: p.link ? 'var(--space-4)' : 0 }}>
                   {p.tags.map((t) => <Tag key={t} tone={p.c}>{t}</Tag>)}
                 </div>
-                {p.link && <Button variant="link">View project ↗</Button>}
+                {p.link && <Button as="span" variant="link">View project ↗</Button>}
               </React.Fragment>
             );
             const cardStyle = { padding: 'var(--space-6) var(--space-6) var(--space-7)', position: 'relative', overflow: 'hidden' };

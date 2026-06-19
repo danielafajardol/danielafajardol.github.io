@@ -43,7 +43,7 @@
 <script type="text/babel" data-presets="env,react">
   function mount() {
     const ns = window.DanielaFajardoDesignSystem_305341;
-    if (!ns || !window.DFPortfolio) { setTimeout(mount, 40); return; }
+    if (!ns || !window.DFPortfolio || !window.DFAbout) { setTimeout(mount, 40); return; }
     const Portfolio = window.DFPortfolio;
     ReactDOM.createRoot(document.getElementById('root')).render(<Portfolio />);
   }
